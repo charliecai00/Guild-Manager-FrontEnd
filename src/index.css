@@ -938,6 +938,8 @@ textarea.w-select {
   display: none !important
 }
 
+
+
 @media screen and (max-width:991px) {
   .w-container {
     max-width: 728px
@@ -3063,7 +3065,7 @@ textarea.w-select {
   top: 18px;
 }
 
-@media screen and (max-width: 991px) {
+@media screen and (max-width: 13000px) {
   .container {
     max-width: 728px;
   }
@@ -3154,6 +3156,11 @@ textarea.w-select {
 }
 
 @media screen and (max-width: 767px) {
+
+  .body-2 {
+    background-repeat: repeat;
+  }
+
   .hero-subscribe-left {
     padding: 60px 15px;
   }
