@@ -7,7 +7,7 @@ const Home = () => {
             <section className="features-table wf-section">
                 <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
                     role="banner" className="navbar w-nav">
-                    <div className="container-5 w-container"><a href="#" className="brand w-nav-brand">
+                    <div className="container-5 w-container"><a href="/#" className="brand w-nav-brand">
                         <img src="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo.jpeg"
                             loading="lazy" width="66" alt="" sizes="66px"
                             srcSet="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo-p-500.jpeg 500w, https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo-p-800.jpeg 800w, https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo.jpeg 900w" /></a>
@@ -25,11 +25,11 @@ const Home = () => {
                 <div className="w-layout-grid grid-4">
                     <div id="w-node-c920977c-e895-676e-2b6b-0e3c1d08f11c-f94199d8" data-current="Tab 3" data-easing="ease"
                         data-duration-in="300" data-duration-out="100" className="tabs w-tabs">
-                        <div className="w-tab-menu"><a data-w-tab="Tab 1" className="tab-link-tab-1 w-inline-block w-tab-link">
+                        <div className="w-tab-menu"><a href='/#' data-w-tab="Tab 1" className="tab-link-tab-1 w-inline-block w-tab-link">
                             <div>Party1</div>
-                        </a><a data-w-tab="Tab 2" className="tab-link-tab-2-2 w-inline-block w-tab-link">
+                        </a><a href='/#' data-w-tab="Tab 2" className="tab-link-tab-2-2 w-inline-block w-tab-link">
                                 <div>Party2</div>
-                            </a><a data-w-tab="Tab 3" className="tab-link-tab-3 w-inline-block w-tab-link w--current">
+                            </a><a href='/#' data-w-tab="Tab 3" className="tab-link-tab-3 w-inline-block w-tab-link w--current">
                                 <div>Party3</div>
                             </a></div>
                         <div className="w-tab-content">
@@ -43,12 +43,12 @@ const Home = () => {
                                             <div className="icon-3 w-icon-dropdown-toggle"></div>
                                             <div className="text-block-4">HeroName</div>
                                         </div>
-                                        <nav className="w-dropdown-list"><a href="#" className="w-dropdown-link">Link 1</a><a href="#"
-                                            className="w-dropdown-link">Link 2</a><a href="#" className="w-dropdown-link">Link 3</a>
+                                        <nav className="w-dropdown-list"><a href="/#" className="w-dropdown-link">Link 1</a><a href="/#"
+                                            className="w-dropdown-link">Link 2</a><a href="/#" className="w-dropdown-link">Link 3</a>
                                         </nav>
-                                    </div><a id="w-node-_3e30ac69-f854-9a76-ae62-da3599c60563-f94199d8" href="#"
+                                    </div><a id="w-node-_3e30ac69-f854-9a76-ae62-da3599c60563-f94199d8" href="/#"
                                         className="button-2 w-button">RECOVER</a><a
-                                            id="w-node-_99c3ae5e-abda-6ea8-ba06-0d560d2455c8-f94199d8" href="#"
+                                            id="w-node-_99c3ae5e-abda-6ea8-ba06-0d560d2455c8-f94199d8" href="/#"
                                             className="button-3 w-button">FIRE</a>
                                 </div>
                             </div>
@@ -62,12 +62,12 @@ const Home = () => {
                                             <div className="icon-3 w-icon-dropdown-toggle"></div>
                                             <div className="text-block-4">HeroName</div>
                                         </div>
-                                        <nav className="w-dropdown-list"><a href="#" className="w-dropdown-link">Link 1</a><a href="#"
-                                            className="w-dropdown-link">Link 2</a><a href="#" className="w-dropdown-link">Link 3</a>
+                                        <nav className="w-dropdown-list"><a href="/#" className="w-dropdown-link">Link 1</a><a href="/#"
+                                            className="w-dropdown-link">Link 2</a><a href="/#" className="w-dropdown-link">Link 3</a>
                                         </nav>
-                                    </div><a id="w-node-_6ee33b5c-3c48-71ee-deb9-f518a35ec9cc-f94199d8" href="#"
+                                    </div><a id="w-node-_6ee33b5c-3c48-71ee-deb9-f518a35ec9cc-f94199d8" href="/#"
                                         className="button-2 w-button">RECOVER</a><a
-                                            id="w-node-_6ee33b5c-3c48-71ee-deb9-f518a35ec9ce-f94199d8" href="#"
+                                            id="w-node-_6ee33b5c-3c48-71ee-deb9-f518a35ec9ce-f94199d8" href="/#"
                                             className="button-3 w-button">FIRE</a>
                                 </div>
                             </div>
@@ -81,12 +81,12 @@ const Home = () => {
                                             <div className="icon-3 w-icon-dropdown-toggle"></div>
                                             <div className="text-block-4">HeroName</div>
                                         </div>
-                                        <nav className="w-dropdown-list"><a href="#" className="w-dropdown-link">Link 1</a><a href="#"
-                                            className="w-dropdown-link">Link 2</a><a href="#" className="w-dropdown-link">Link 3</a>
+                                        <nav className="w-dropdown-list"><a href="/#" className="w-dropdown-link">Link 1</a><a href="/#"
+                                            className="w-dropdown-link">Link 2</a><a href="/#" className="w-dropdown-link">Link 3</a>
                                         </nav>
-                                    </div><a id="w-node-f464c27a-6657-b7f0-cd55-02163752cc9c-f94199d8" href="#"
+                                    </div><a id="w-node-f464c27a-6657-b7f0-cd55-02163752cc9c-f94199d8" href="/#"
                                         className="button-2 w-button">RECOVER</a><a
-                                            id="w-node-f464c27a-6657-b7f0-cd55-02163752cc9e-f94199d8" href="#"
+                                            id="w-node-f464c27a-6657-b7f0-cd55-02163752cc9e-f94199d8" href="/#"
                                             className="button-3 w-button">FIRE</a>
                                 </div>
                             </div>

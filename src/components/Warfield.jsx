@@ -8,7 +8,7 @@ const Warfield = () => {
             <section className="features-table wf-section">
                 <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
                     role="banner" className="navbar w-nav">
-                    <div className="container-5 w-container"><a href="#" className="brand w-nav-brand"><img
+                    <div className="container-5 w-container"><a href="/#" className="brand w-nav-brand"><img
                         src="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63de9aa447ab585d1895c3fb_logo.png"
                         loading="lazy" width="66" alt="" /></a>
                         <nav role="navigation" className="w-nav-menu">
@@ -24,11 +24,11 @@ const Warfield = () => {
             <div className="w-layout-grid grid-5">
                 <div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100"
                     className="tabs-2 w-tabs">
-                    <div className="w-tab-menu"><a data-w-tab="Tab 1" className="tab-link-tab-1-2 w-inline-block w-tab-link w--current">
+                    <div className="w-tab-menu"><a href="/#" data-w-tab="Tab 1" className="tab-link-tab-1-2 w-inline-block w-tab-link w--current">
                         <div>Party1</div>
-                    </a><a data-w-tab="Tab 2" className="tab-link-tab-2-3 w-inline-block w-tab-link">
+                    </a><a href="/#" data-w-tab="Tab 2" className="tab-link-tab-2-3 w-inline-block w-tab-link">
                             <div>Party2</div>
-                        </a><a data-w-tab="Tab 3" className="tab-link-tab-3-2 w-inline-block w-tab-link">
+                        </a><a href="/#" data-w-tab="Tab 3" className="tab-link-tab-3-2 w-inline-block w-tab-link">
                             <div>Party3</div>
                         </a></div>
                     <div className="w-tab-content">
@@ -36,7 +36,7 @@ const Warfield = () => {
                             <p id="w-node-bb97bd61-e036-f759-3fd8-f22e917474f1-6639e95d" className="paragraph-2">Lorem ipsum dolor
                                 sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis
                                 cursus, mi quis viverra ornare, eros d </p><a
-                                    id="w-node-_46a6ce26-088c-f0a0-cf29-2caf60a34c51-6639e95d" href="#" className="w-button">Choose</a>
+                                    id="w-node-_46a6ce26-088c-f0a0-cf29-2caf60a34c51-6639e95d" href="/#" className="w-button">Choose</a>
                         </div>
                         <div data-w-tab="Tab 2" className="w-tab-pane"></div>
                         <div data-w-tab="Tab 3" className="w-tab-pane"></div>

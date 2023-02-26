@@ -2904,7 +2904,7 @@ textarea.w-select {
 
 .grid-5 {
   overflow: auto;
-  max-height: none;
+  height: 100vh;
   grid-column-gap: 104px;
   -ms-grid-columns: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
