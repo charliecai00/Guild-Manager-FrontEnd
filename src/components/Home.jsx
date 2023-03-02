@@ -1,16 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button} from 'react-bootstrap';
+
 
 const Home = () => {
+
+
     return (
         <div className="body-2">
             <section className="features-table wf-section">
                 <div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease"
                     role="banner" className="navbar w-nav">
-                    <div className="container-5 w-container"><a href="/#" className="brand w-nav-brand">
-                        <img src="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo.jpeg"
-                            loading="lazy" width="66" alt="" sizes="66px"
-                            srcSet="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo-p-500.jpeg 500w, https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo-p-800.jpeg 800w, https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo.jpeg 900w" /></a>
+                    <div className="container-5 w-container">
+                        <a href="/#" className="brand w-nav-brand">
+                            <Button variant="contained" href="https://guild-manager.herokuapp.com/GuildGuild/Reload">
+                                Reload
+                            </Button>
+                            <img src="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo.jpeg"
+                                loading="lazy" width="66" alt="" sizes="66px"
+                                srcSet="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo-p-500.jpeg 500w, https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo-p-800.jpeg 800w, https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo.jpeg 900w" /></a>
                         <nav role="navigation" className="w-nav-menu">
                             <Link to="/" aria-current="page" className="nav-link w-nav-link w--current">Home</Link>
                             <Link to="/warfield" className="nav-link-2 w-nav-link">WarField</Link>
