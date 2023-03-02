@@ -14,7 +14,7 @@ const Home = () => {
                     <div className="container-5 w-container">
                         <a href="/#" className="brand w-nav-brand">
                             <Button variant="contained" href="https://guild-manager.herokuapp.com/GuildGuild/Reload">
-                                Reload
+                                ReloadBUTTON
                             </Button>
                             <img src="https://uploads-ssl.webflow.com/63dd34e66ca34e4b9f4199d7/63dd593001b9b889a46919e0_logo.jpeg"
                                 loading="lazy" width="66" alt="" sizes="66px"
