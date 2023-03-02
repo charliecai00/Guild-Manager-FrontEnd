@@ -92,3 +92,8 @@
   width: 20vw;
   background-color: rgb(207, 226, 243);
 }
+
+.page{
+  display:grid;
+  grid-template-columns: 65vw, 35vw;
+}
