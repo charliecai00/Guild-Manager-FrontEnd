@@ -27,6 +27,7 @@
 
 .grid-container{
   position: relative;
+  top: 20px;
   display: inline-grid;
   width: 67vw;
   grid-template-columns: repeat(3, 1fr);
@@ -35,6 +36,7 @@
   margin-top: 10vh;
   margin-left: 2vw;
   padding: 10px;
+  border: 1px solid black;
 }
 
 .grid-item {
@@ -86,9 +88,23 @@
 }
 
 .details{
+  /* position: relative; */
   display: inline-block;
   border: 1.5px solid black;
-  height: 90vh;
+  height: 70vh;
+  width: 20vw;
+  background-color: rgb(207, 226, 243);
+  vertical-align: bottom;
+}
+
+.inlineblock{
+  /* display: inline-block;
+  height: 70vh;
+  width: 30vw;
+  border: solid black; */
+  display: inline-block;
+  border: 1.5px solid black;
+  height: 70vh;
   width: 20vw;
   background-color: rgb(207, 226, 243);
 }
