@@ -5,9 +5,8 @@
 
 }
 
-
 .Guild_title_block{
-  display: block;
+  display: inline-block;
   width: 52vw;
   height: 10vh;
   margin-left: 2vw;
@@ -21,26 +20,23 @@
   font-weight: normal;
   font-family: Arial;
   font-size: 40px;
-  position: relative;
-  top: -2px;
 }
 
 .grid-container{
-  position: relative;
-  top: 20px;
+  position: absolute;
+  top: 25vh;
+  left: 1vw;
+  height: 70vh;
   display: inline-grid;
-  width: 67vw;
+  width: 64vw;
   grid-template-columns: repeat(3, 1fr);
   grid-gap: 1rem;
   background-color: transparent;
-  margin-top: 10vh;
-  margin-left: 2vw;
-  padding: 10px;
+  /* padding: 10px; */
   border: 1px solid black;
 }
 
 .grid-item {
-  height: 67vh;
   background-color: rgb(207, 226, 243);
   border: 1.5px solid black;
   padding: 5px;
@@ -88,28 +84,14 @@
 }
 
 .details{
-  /* position: relative; */
-  display: inline-block;
+  position: absolute;
+  top: 5vh;
+  right: 4vw;
+  height: 90vh;
+  width: 27vw;
   border: 1.5px solid black;
-  height: 70vh;
-  width: 20vw;
   background-color: rgb(207, 226, 243);
-  vertical-align: bottom;
-}
-
-.inlineblock{
-  /* display: inline-block;
-  height: 70vh;
-  width: 30vw;
-  border: solid black; */
-  display: inline-block;
-  border: 1.5px solid black;
-  height: 70vh;
-  width: 20vw;
-  background-color: rgb(207, 226, 243);
-}
-
-.page{
-  display:grid;
-  grid-template-columns: 65vw, 35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
