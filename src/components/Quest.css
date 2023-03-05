@@ -1,0 +1,120 @@
+.for_sale {
+    /* position: absolute;
+    left: 45vw;
+    top: 10vh; */
+    display: inline-block;
+    margin-top: 5vh;
+    margin-left: 2.8vw;
+    height: 10vh;
+    width: 90vw;
+    border: solid black;
+    background-color: rgb(255, 149, 0);
+}
+
+.text {
+    font-weight: 100;
+    font-family: Arial;
+    font-size: 30px;
+}
+
+.vertical_middle {
+    position: relative;
+    top: 50%;
+    transform: translate(0px, -50%);
+}
+
+.scrollable-list {
+    margin-top: 5vh;
+    height: 70vh;
+    overflow: hidden;
+    overflow-y: scroll;
+    font-size: 0.85em;
+}
+
+.sales {
+    padding-left: 10px;
+}
+
+.sale_grid {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    grid-gap: 1rem;
+}
+
+.sale_item {
+    background-color: rgb(190, 253, 190);
+    height: 8vh;
+    border: solid black;
+
+}
+
+.sale_button {
+    background-color: rgb(255, 255, 0);
+    border: solid black;
+}
+
+
+
+#party_status {
+    font-weight: normal;
+    font-family: Arial;
+    font-size: 30px;
+    padding-left: 10px;
+    margin-left: 10%;
+}
+
+.payout {
+    display: inline-block;
+    position: absolute;
+    left: 51.7vw;
+    top: 59vh;
+    margin-top: 5vh;
+    height: 12vh;
+    width: 45vw;
+    border: solid black;
+    background-color: rgb(190, 253, 190);
+}
+
+.done {
+    display: inline-block;
+    position: absolute;
+    top: 78vh;
+    left: 51.7vw;
+    margin-top: 5vh;
+    height: 12vh;
+    width: 45vw;
+    border: solid black;
+    background-color: rgb(255, 114, 255);
+}
+
+.info {
+    display: inline-block;
+    margin-top: 5vh;
+    height: 7vh;
+    width: 34vw;
+    border: solid black;
+    background-color: rgb(255, 114, 255);
+    font-weight: normal;
+    font-family: Arial;
+    font-size: 35px;
+}
+
+.bar_left {
+    display: inline-block;
+    margin-top: 7vh;
+    height: 10vh;
+    width: 60vw;
+    border: solid black;
+    background-color: rgb(255, 149, 0);
+}
+
+.bar_right {
+    display: inline-block;
+    position: relative;
+    left: -6px;
+    margin-top: 7vh;
+    height: 10vh;
+    width: 20vw;
+    border: solid black;
+    background-color: rgb(255, 255, 0);
+}
