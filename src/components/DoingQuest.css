@@ -1,0 +1,25 @@
+.page{
+    display: flex;
+    justify-content: center;
+    /* align-items: center; */
+    /* text-align: center; */
+}
+
+.sword_art{
+    /* position: absolute;
+    left: 45vw;
+    top: 10vh; */
+    /* display: block; */
+    margin-top: 14vh;
+    height: 28vh;
+    width: 20vw;
+    text-align: center;
+    background-color: rgb(190, 253, 190);
+}
+
+.info{
+    margin-top:5vh;
+    height: 10vh;
+    width: 36vw;
+    background-color: rgb(255, 114, 255);
+}
