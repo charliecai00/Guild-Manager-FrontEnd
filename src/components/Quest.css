@@ -14,7 +14,7 @@
 .text {
     font-weight: 100;
     font-family: Arial;
-    font-size: 30px;
+    font-size: 28px;
 }
 
 .vertical_middle {
@@ -45,7 +45,7 @@
     background-color: rgb(190, 253, 190);
     height: 8vh;
     border: solid black;
-
+    padding-left: 20px;
 }
 
 .sale_button {
