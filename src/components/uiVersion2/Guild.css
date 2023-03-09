@@ -78,6 +78,7 @@
   left: -15px;
 }
 
+/* The details box on the right side of the page contains different blocks according to various user interactions*/
 .details {
   position: absolute;
   top: 5vh;
@@ -91,6 +92,9 @@
   font-size: 35px;
 }
 
+/* Below is the style for guild_status block inside details box */
+/* There are three other blocks that will be displayed in details box given different user interactions.*/
+/* Among these blocks, guild_status is the default display */
 .guild_status{
   /* display: none; */
   position: relative;
@@ -106,6 +110,7 @@
   padding-right: 10px;
 }
 
+/* Below is the style for hero_detail block inside details box */
 .hero_detail{
   display: none;
 }
@@ -192,10 +197,123 @@
   background-color:rgb(255, 229, 153);
 }
 
+/* Below is the style for party_detail block inside details box */
 .party_detail{
-  
+  display: none;
 }
 
+#party_name{
+  height: 8vh;
+  margin: 15px 15px 15px 15px;
+  border: solid black;
+  background-color: rgb(190, 253, 190);
+}
+
+#hero_list{
+  height: 40vh;
+  width: 90%;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid black;
+  font-size: 35px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: rgb(255, 114, 255);
+}
+
+#add_hero{
+  height: 8vh;
+  width: 90%;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid black;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color:rgb(255, 229, 153);
+}
+
+#remove_hero{
+  height: 8vh;
+  width: 90%;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid black;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color:rgb(255, 229, 153);
+}
+
+#disband_hero{
+  height: 8vh;
+  width: 90%;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid black;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color:rgb(255, 229, 153);
+}
+
+/* Below is the style for quest_detail block inside details box */
 .quest_detail{
-
+  display: none;
 }
+
+#quest_name{
+  height: 8vh;
+  margin: 15px 15px 15px 15px;
+  border: solid black;
+  background-color: rgb(190, 253, 190);
+}
+
+#challenge_list{
+  height: 50vh;
+  width: 90%;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid black;
+  font-size: 35px;
+  padding-top: 10px;
+  padding-left: 10px;
+  background-color: rgb(255, 114, 255);
+}
+
+#start_quest{
+  height: 8vh;
+  width: 90%;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid black;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color:rgb(255, 229, 153);
+}
+
+#sell_quest{
+  height: 8vh;
+  width: 90%;
+  margin: 15px 15px 15px 15px;
+  overflow: hidden;
+  overflow-y: scroll;
+  border: solid black;
+  font-size: 30px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color:rgb(255, 229, 153);
+}
+
