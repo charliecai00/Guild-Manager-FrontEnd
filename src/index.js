@@ -2,13 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 // import App from './App';
-import Guild from './components/uiVersion2/Guild'
+// import Guild from './components/Guild';
+// import GuildManager from './components/GuildManager';
+// import DoingQuest from './components/DoingQuest';
+// import Hero from './components/Hero';
+// import Quest from './components/Quest';
+import QuestReport from './components/QuestReport';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Guild/>
+    {/* <Guild/> */}
+    {/* <GuildManager/> */}
+    {/* <DoingQuest/> */}
+    {/* <Hero/> */}
+    {/* <Quest/> */}
+    <QuestReport/>
+    {/* <Guild/> */}
   </React.StrictMode>
 );
 
