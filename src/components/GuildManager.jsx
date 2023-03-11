@@ -21,15 +21,15 @@ const GuildManager = () => {
           </h2>
         </div>
         <div className="guild_container">
-          <button className="guild-button">Awesome Guild</button>
-          <button className="guild-button">Cool Guys</button>
-          <button className="guild-button">The Thieves Guild</button>
-          <button className="guild-button">Awesome Guild</button>
-          <button className="guild-button">Awesome Guild</button>
-          <button className="guild-button">Awesome Guild</button>
-          <button className="guild-button">Awesome Guild</button>
-          <button className="guild-button">Awesome Guild</button>
-          <button className="guild-button">Awesome Guild</button>
+          <Button className="guild-button" href="/guild">Awesome Guild</Button>
+          <Button className="guild-button" href="/guild">Cool Guys</Button>
+          <Button className="guild-button" href="/guild">The Thieves Guild</Button>
+          <Button className="guild-button" href="/guild">Awesome Guild</Button>
+          <Button className="guild-button" href="/guild">Awesome Guild</Button>
+          <Button className="guild-button" href="/guild">Awesome Guild</Button>
+          <Button className="guild-button" href="/guild">Awesome Guild</Button>
+          <Button className="guild-button" href="/guild">Awesome Guild</Button>
+          <Button className="guild-button" href="/guild">Awesome Guild</Button>
         </div>
         <div className="new_guild">
           <form action="/action_page.php">
