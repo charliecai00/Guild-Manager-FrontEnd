@@ -11,6 +11,7 @@ import GuildManager from "./components/GuildManager";
 import Guild from "./components/Guild";
 import Hero from "./components/Hero";
 import Quest from "./components/Quest";
+import QuestReport from "./components/QuestReport";
 
 const App = () => {
   return (
@@ -20,6 +21,7 @@ const App = () => {
           <Route path='/guild' element={<Guild/>} />
           <Route path='/hero' element={<Hero/>} />
           <Route path='/quest' element={<Quest/>} />
+          <Route path='/questReport' element={<QuestReport/>} />
           {/* If any route mismatches the upper 
           route endpoints then, Navigate triggers 
           and Navigates app to home component with to="/" */}
