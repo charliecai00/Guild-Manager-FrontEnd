@@ -1,9 +1,25 @@
 import './GuildManager.css';
 import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { Button} from 'react-bootstrap';
 
 const GuildManager = () => {
+  // const apiUrl = "https://guild-manager.herokuapp.com/Guild/Reload"
+  const apiUrl = "http://127.0.0.1:8000/Guild/Reload"
+
+  function pullJson(){
+    fetch(apiUrl)
+    .then(response=>response.json())
+    .then(result => {
+      console.log(result)
+    })
+    // return 
+  }
+  useEffect(()=>{
+    pullJson()
+  }, [])
+
       return (
         <div>
         <meta charSet="utf-8" />

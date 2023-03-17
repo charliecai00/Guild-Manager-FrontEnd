@@ -8,8 +8,6 @@ const DoingQuest = () => {
         <div>
         <meta charSet="utf-8" />
         <title>DoingQuest</title>
-        <link rel="stylesheet" href="DoingQuest.css" media="screen" />
-        <link rel="stylesheet" href="shared.css" />
         <div className="page">
           {/* The title */}
           <div className="sword_art">

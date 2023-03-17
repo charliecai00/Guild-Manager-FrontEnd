@@ -7,7 +7,7 @@ import App from './App';
 // import DoingQuest from './components/DoingQuest';
 // import Hero from './components/Hero';
 // import Quest from './components/Quest';
-import QuestReport from './components/QuestReport';
+// import QuestReport from './components/QuestReport';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
