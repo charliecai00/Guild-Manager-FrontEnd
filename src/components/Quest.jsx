@@ -8,8 +8,6 @@ const Quest = () => {
     <div>
       <meta charSet="utf-8" />
       <title>Quest</title>
-      <link rel="stylesheet" href="Quest.css" media="screen" />
-      <link rel="stylesheet" href="shared.css" />
       <div className="for_sale">
         <div className="text vertical_middle" style={{ paddingLeft: '10px', fontSize: '35px' }}>
           QUESTS FOR SALE
