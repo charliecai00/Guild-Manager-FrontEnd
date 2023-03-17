@@ -12,8 +12,7 @@ const GuildManager = () => {
         <link rel="stylesheet" href="shared.css" />
         {/* The title */}
         <div className="guildmanager_title">
-          <h1 className="title_text">GUILD MANAGER
-          </h1>
+          <h1 className="title_text">GUILD MANAGER</h1>
         </div>
         <div className="select_guild">
           <h2 className="subtitle_text">

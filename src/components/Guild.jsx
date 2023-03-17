@@ -3,6 +3,10 @@ import React from 'react';
 import { Link } from "react-router-dom";
 import { Button} from 'react-bootstrap';
 
+function clickMe(){
+  alert("You clicked me!");
+}
+
 const Guild = () => {
       return (
         <div>
@@ -20,7 +24,9 @@ const Guild = () => {
               <div className="grid-title">
                 <div>Heroes</div>
               </div>
-              <button className="grid-button">Hire</button>
+              <a href="/hero">
+                <button className="grid-button" >Hire</button>
+              </a>
               <ul className="scrollable-list">
                 <li className="elements-in-scrollable">John</li>
                 <li className="elements-in-scrollable">Basquiat</li>
@@ -44,7 +50,9 @@ const Guild = () => {
               <div className="grid-title">
                 <div>Quests</div>
               </div>
-              <button className="grid-button">Buy</button>
+              <a href="/quest">
+                <button className="grid-button" >Buy</button>
+              </a>
               <ul className="scrollable-list">
                 <li className="elements-in-scrollable">The Woods</li>
                 <li className="elements-in-scrollable">The Dragon</li>

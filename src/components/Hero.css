@@ -26,6 +26,7 @@
 .scrollable-list {
     margin-top: 5vh;
     height: 70vh;
+    padding-top: 2vh;
     overflow: hidden;
     overflow-y: scroll;
     font-size: 0.85em;
