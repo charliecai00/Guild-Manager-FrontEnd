@@ -1,8 +1,6 @@
 import './GuildManager.css';
 import React from 'react';
 import { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
 
 const GuildManager = () => {
   // const apiUrl = "https://guild-manager.herokuapp.com/Guild/Reload"
@@ -14,16 +12,15 @@ const GuildManager = () => {
       .then(response => response.json())
       .then(result => {
         console.log(result);
-        fetchedData = result.Response.map(function(todo){
+        fetchedData = result.Response.map(function(guildName, ind){
           return(
-            <a href="/guild">
-              <button className="guild-button" href="/guild">{todo}</button>
+            <a href="/guild" key={ind}>
+              <button className="guild-button" href="/guild">{guildName}</button>
             </a>
           )
         })
         setguilds(fetchedData);
       })
-    // return 
   }
   useEffect(() => {
     pullJson();
