@@ -1,14 +1,20 @@
 import './GuildManager.css';
 import React from 'react';
+import axios from 'axios';
 import { useState, useEffect } from 'react';
 
 const GuildManager = () => {
-  // const apiUrl = "https://guild-manager.herokuapp.com/Guild/Reload"
-  const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
+  const herokuUrl = "https://guild-manager.herokuapp.com"
+  // const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
   const [guilds, setguilds] = useState();
+  const [formData, setFormData] = useState("");
+
   let fetchedData;
+  const reloadUrl = `${herokuUrl}/Guild/Reload`;
+  const createGuildUrl = `${herokuUrl}/Guild/Create`;
+  console.log(reloadUrl);
   function pullJson() {
-    fetch(apiUrl)
+    fetch(reloadUrl)
       .then(response => response.json())
       .then(result => {
         console.log(result);
@@ -25,6 +31,25 @@ const GuildManager = () => {
   useEffect(() => {
     pullJson();
   }, [])
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    axios.post(createGuildUrl, {"Name": formData})
+      .then((response) => {
+        console.log(response.data);
+        pullJson();
+        // Do something with the response, like update state or redirect
+      })
+      .catch((error) => {
+        console.log(error);
+        // Handle the error, like displaying an error message
+      });
+  };
+
+  const handleInputChange = (event) => {
+    const value = event.target.value;
+    setFormData(value);
+  };
 
   return (
     <div>
@@ -45,10 +70,10 @@ const GuildManager = () => {
         {guilds}
       </div>
       <div className="new_guild">
-        <form action="/action_page.php">
+        <form onSubmit={handleSubmit}>
           <label id="new_guild_text" htmlFor="new_guild_name">New Guild:</label>
           <span>
-            <input name="new_guild_name" id="new_guild_text" type="text" placeholder="New Guild Name" />
+            <input name="new_guild_name" id="new_guild_text" type="text" value={formData} onChange={handleInputChange} />
           </span>
         </form>
       </div>
