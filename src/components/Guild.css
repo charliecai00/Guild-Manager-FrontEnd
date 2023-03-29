@@ -68,14 +68,16 @@
   margin-left: 2%;
   margin-right: 4%;
   margin-bottom: 4%;
-  padding-top: 8%;
-  padding-left: 5%;
+  padding-left: 3%;
+  padding-right: 3%;
 }
 
 .elements-in-scrollable {
   position: relative;
   padding-left: 0;
-  /* left: -15px; */
+  font-size: 0.6em;
+  background-color: transparent;
+  width: 100%;
 }
 
 /* The details box on the right side of the page contains different blocks according to various user interactions*/

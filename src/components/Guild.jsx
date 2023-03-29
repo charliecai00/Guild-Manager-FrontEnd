@@ -1,11 +1,11 @@
 import './Guild.css';
 import './shared.css';
 import axios from 'axios';
-import React, { useState, useEffect }from 'react';
+import React, { useState, useEffect } from 'react';
 import iconCloseImg from '../img/icon-close.png';
 
 const Guild = () => {
-  const [ guildDetail, setGuildDetail ] = useState({
+  const [guildDetail, setGuildDetail] = useState({
     "ID": null,
     "Name": "",
     "Funds": null,
@@ -20,15 +20,27 @@ const Guild = () => {
   const herokuUrl = "https://guild-manager.herokuapp.com"
   const guildDetailUrl = `${herokuUrl}/Guild/Guild_Detail`;
 
-  const getGuildInfo = (heroId)=>{
+  const getGuildInfo = (heroId) => {
     axios.post(guildDetailUrl, { "id": heroId })
-    .then((response) => {
-      console.log(response.data.Response);
-      setGuildDetail(response.data.Response);
-    })
-    .catch((error) => {
-      console.log(error);
-    });
+      .then((response) => {
+        console.log(response.data.Response);
+        setGuildDetail(response.data.Response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  const clickHero = () => {
+    console.log("hero clicked");
+  }
+
+  const clickParty = () => {
+    console.log("party clicked");
+  }
+
+  const clickQuest = () => {
+    console.log("quest clicked");
   }
 
   useEffect(() => {
@@ -62,11 +74,15 @@ const Guild = () => {
             <button className="grid-button" >Hire</button>
           </a>
           <ul className="guild_scrollable-list">
-            <ul className="elements-in-scrollable">John</ul>
-            <ul className="elements-in-scrollable">Basquiat</ul>
-            <ul className="elements-in-scrollable">Gandalf</ul>
-            <ul className="elements-in-scrollable">Conan</ul>
-            <ul className="elements-in-scrollable">Link 5</ul>
+            {guildDetail.Hero && guildDetail.Hero.map(function (hero, ind) {
+              return (
+                <button className="elements-in-scrollable"
+                  key={ind}
+                  onClick={clickHero}>
+                  {hero.name}
+                </button>
+              )
+            })}
           </ul>
         </div>
         <div className="grid-item">
@@ -75,9 +91,15 @@ const Guild = () => {
           </div>
           <button className="grid-button">Create</button>
           <ul className="guild_scrollable-list">
-            <ul className="elements-in-scrollable">Thieves</ul>
-            <ul className="elements-in-scrollable">Robbers</ul>
-            <ul className="elements-in-scrollable">Chill Dudes</ul>
+            {guildDetail.Party && guildDetail.Party.map(function (party, ind) {
+              return (
+                <button className="elements-in-scrollable"
+                  key={ind}
+                  onClick={clickParty}>
+                  {party.name}
+                </button>
+              )
+            })}
           </ul>
         </div>
         <div className="grid-item">
@@ -88,10 +110,15 @@ const Guild = () => {
             <button className="grid-button" >Buy</button>
           </a>
           <ul className="guild_scrollable-list">
-            <ul className="elements-in-scrollable">The Woods</ul>
-            <ul className="elements-in-scrollable">The Dragon</ul>
-            <ul className="elements-in-scrollable">The Wave</ul>
-            <ul className="elements-in-scrollable">The Storm</ul>
+            {guildDetail.Quest && guildDetail.Quest.map(function (quest, ind) {
+              return (
+                <button className="elements-in-scrollable"
+                  key={ind}
+                  onClick={clickQuest}>
+                  {quest.name}
+                </button>
+              )
+            })}
           </ul>
         </div>
       </span>
@@ -99,11 +126,11 @@ const Guild = () => {
       <span className="details">
         <div className="guild_status">
           Guild Stats:
-          <br /> Funds: 30
-          <br /> Heroes: 4
-          <br /> Parties: 3
-          <br /> Quests: 2
-          <br /> Quests Completed: 4
+          <br /> Funds: {guildDetail.Funds}
+          <br /> Heroes: {guildDetail['Amt. of Hero']}
+          <br /> Parties: {guildDetail['Amt. of Party']}
+          <br /> Quests: {guildDetail['Amt. of Quest']}
+          <br /> Quests Completed: {guildDetail.QuestsCompleted}
         </div>
         {/* HERO DETAIL BOARD: display default set as "none"*/}
         <div className="hero_detail">
