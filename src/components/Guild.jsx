@@ -1,21 +1,13 @@
 import './Guild.css';
 import './shared.css';
-import React, { useState, useEffect, useContext }from 'react';
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
-import VariableContext from './context';
+import React, { useState, useEffect }from 'react';
 
 
 const Guild = () => {
-  const {currGuild} = useContext(VariableContext);
 
   useEffect(() => {
-    console.log(currGuild);
+    console.log(localStorage.getItem('currGuild'));
   }, []);
-
-  // useEffect(() => {
-  //   console.log(currGuild);
-  // }, [currGuild]);
 
   return (
     <div>
@@ -23,7 +15,7 @@ const Guild = () => {
       <title>Guild</title>
       {/* The title */}
       <div className="guild_title_block">
-        <h1 className="title_text">{currGuild.name}</h1>
+        <h1 className="title_text">{JSON.parse(localStorage.getItem('currGuild')).name}</h1>
       </div>
       {/* The exit icon */}
       <a href="/">

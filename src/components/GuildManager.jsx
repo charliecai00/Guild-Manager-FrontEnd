@@ -1,25 +1,19 @@
 import './GuildManager.css';
 import axios from 'axios';
-import React, { useState, useEffect, useContext } from 'react';
-import VariableContext from './context';
+import React, { useState, useEffect } from 'react';
 
 const GuildManager = () => {
   const herokuUrl = "https://guild-manager.herokuapp.com"
   const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
   const [guilds, setGuilds] = useState();
   const [formData, setFormData] = useState("");
-  const { currGuild, setCurrGuild } = useContext(VariableContext);
 
   const reloadUrl = `${herokuUrl}/Guild/Reload`;
   const createGuildUrl = `${herokuUrl}/Guild/Create`;
 
-  let fetchedData;
-
   const handleClick = (event) => {
-    // console.log(event.target.value);
-    setCurrGuild(event.target.value);
-    // navigate to the '/guild' route
-    // window.location.href = '/guild';
+    localStorage.setItem("currGuild", event.target.value);
+    window.location.href = '/guild';
   };
 
   function pullJson() {
@@ -35,22 +29,15 @@ const GuildManager = () => {
     pullJson();
   }, [])
 
-  useEffect(() => {
-    console.log(currGuild);
-  }, [currGuild]);
-
-
   const handleSubmit = (event) => {
     event.preventDefault();
     axios.post(createGuildUrl, { "Name": formData })
       .then((response) => {
         console.log(response.data);
         pullJson();
-        // Do something with the response, like update state or redirect
       })
       .catch((error) => {
         console.log(error);
-        // Handle the error, like displaying an error message
       });
   };
 
@@ -75,24 +62,24 @@ const GuildManager = () => {
         </h2>
       </div>
       <div className="guild_container">
-        {guilds && guilds.map(function (guildInfo, ind){
-          return(
-          <button
-            className="guild-button"
-            value={JSON.stringify({ id: guildInfo.id, name: guildInfo.name })}
-            onClick={handleClick}
-            key={ind}
-          >
-            {guildInfo.name}
-          </button>
+        {guilds && guilds.map(function (guildInfo, ind) {
+          return (
+            <button
+              className="guild-button"
+              value={JSON.stringify({ id: guildInfo.id, name: guildInfo.name })}
+              onClick={handleClick}
+              key={ind}
+            >
+              {guildInfo.name}
+            </button>
           )
         })}
 
-        <button className="guild-button" 
-                      value={JSON.stringify({"id": "000", "name": "inline"})}
-                      onClick={handleClick}>
-                {"test"}
-              </button>
+        <button className="guild-button"
+          value={JSON.stringify({ "id": "000", "name": "inline" })}
+          onClick={handleClick}>
+          {"test"}
+        </button>
 
       </div>
       <div className="new_guild">
