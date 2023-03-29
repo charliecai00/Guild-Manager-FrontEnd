@@ -8,8 +8,6 @@ const QuestReport = () => {
         <div>
             <meta charSet="utf-8" />
             <title>QuestReport</title>
-            <link rel="stylesheet" href="QuestReport.css" media="screen" />
-            <link rel="stylesheet" href="shared.css" />
             <div className="report">
                 <div className="report_text" style={{ paddingTop: '10px', paddingLeft: '10px' }}>
                     QUEST REPORT:

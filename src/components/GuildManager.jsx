@@ -1,36 +1,54 @@
 import './GuildManager.css';
-import React from 'react';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
+import VariableContext from './context';
 
 const GuildManager = () => {
   const herokuUrl = "https://guild-manager.herokuapp.com"
-  // const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
+  const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
   const [guilds, setguilds] = useState();
   const [formData, setFormData] = useState("");
+  const { currGuild, setCurrGuild } = useContext(VariableContext);
 
-  let fetchedData;
   const reloadUrl = `${herokuUrl}/Guild/Reload`;
   const createGuildUrl = `${herokuUrl}/Guild/Create`;
-  console.log(reloadUrl);
+  
+  let fetchedData;
+
+  const handleClick = (event) => {
+    // console.log(event.target.value);
+    setCurrGuild(event.target.value);
+    // navigate to the '/guild' route
+    window.location.href = '/guild';
+  };
+  
   function pullJson() {
     fetch(reloadUrl)
       .then(response => response.json())
       .then(result => {
         console.log(result);
-        fetchedData = result.Response.map(function(guildName, ind){
+        fetchedData = result.Response.map(function(guildInfo, ind){
           return(
-            <a href="/guild" key={ind}>
-              <button className="guild-button" href="/guild">{guildName}</button>
-            </a>
+            <button className="guild-button" 
+                    value={JSON.stringify({"id": guildInfo.id, "name": guildInfo.name})}
+                    onClick={handleClick}
+                    key={ind}>
+              {guildInfo.name}
+            </button>
           )
         })
         setguilds(fetchedData);
       })
   }
+
   useEffect(() => {
     pullJson();
   }, [])
+
+  useEffect(() => {
+    console.log(currGuild);
+  }, [currGuild]);
+  
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -68,6 +86,13 @@ const GuildManager = () => {
       </div>
       <div className="guild_container">
         {guilds}
+        
+              {/* <button className="guild-button" 
+                      value={JSON.stringify({"id": "000", "name": "inline"})}
+                      onClick={handleClick}>
+                {"test"}
+              </button> */}
+  
       </div>
       <div className="new_guild">
         <form onSubmit={handleSubmit}>

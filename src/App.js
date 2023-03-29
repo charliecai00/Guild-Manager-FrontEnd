@@ -1,5 +1,5 @@
 import './App.css';
-import React from 'react';
+import React, { useState } from 'react';
 import {
   BrowserRouter as Router,
   Routes,
@@ -12,10 +12,14 @@ import Guild from "./components/Guild";
 import Hero from "./components/Hero";
 import Quest from "./components/Quest";
 import QuestReport from "./components/QuestReport";
+import VariableContext from './components/context';
 
 const App = () => {
+  const [currGuild, setCurrGuild] = useState({"id": "0", "name": ""});
+
   return (
       <Router>
+        <VariableContext.Provider value={{ currGuild, setCurrGuild }}>
         <Routes>
           <Route path='/' element={<GuildManager/>} />
           <Route path='/guild' element={<Guild/>} />
@@ -27,8 +31,9 @@ const App = () => {
           and Navigates app to home component with to="/" */}
           {/* <Route path='*' element={<Navigate replace to="/" />} /> */}
         </Routes>
+        </VariableContext.Provider>
       </Router>
-  )
+  );
 }
 
 export default App;

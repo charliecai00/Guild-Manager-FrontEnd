@@ -1,21 +1,29 @@
 import './Guild.css';
 import './shared.css';
-import React from 'react';
+import React, { useState, useEffect, useContext }from 'react';
 import { Link } from "react-router-dom";
 import { Button } from 'react-bootstrap';
+import VariableContext from './context';
 
-function clickMe() {
-  alert("You clicked me!");
-}
 
 const Guild = () => {
+  const {currGuild} = useContext(VariableContext);
+
+  useEffect(() => {
+    console.log(currGuild);
+  }, []);
+  
+  useEffect(() => {
+    console.log(currGuild);
+  }, [currGuild]);
+
   return (
     <div>
       <meta charSet="utf-8" />
       <title>Guild</title>
       {/* The title */}
       <div className="guild_title_block">
-        <h1 className="title_text">The Thieves Guild</h1>
+        <h1 className="title_text">{currGuild.name}</h1>
       </div>
       {/* The exit icon */}
       <a href="/">
