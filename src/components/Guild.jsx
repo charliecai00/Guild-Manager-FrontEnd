@@ -12,10 +12,10 @@ const Guild = () => {
   useEffect(() => {
     console.log(currGuild);
   }, []);
-  
-  useEffect(() => {
-    console.log(currGuild);
-  }, [currGuild]);
+
+  // useEffect(() => {
+  //   console.log(currGuild);
+  // }, [currGuild]);
 
   return (
     <div>
