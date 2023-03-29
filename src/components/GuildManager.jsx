@@ -74,13 +74,6 @@ const GuildManager = () => {
             </button>
           )
         })}
-
-        <button className="guild-button"
-          value={JSON.stringify({ "id": "000", "name": "inline" })}
-          onClick={handleClick}>
-          {"test"}
-        </button>
-
       </div>
       <div className="new_guild">
         <form onSubmit={handleSubmit}>

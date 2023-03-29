@@ -1,12 +1,41 @@
 import './Guild.css';
 import './shared.css';
+import axios from 'axios';
 import React, { useState, useEffect }from 'react';
-
+import iconCloseImg from '../img/icon-close.png';
 
 const Guild = () => {
+  const [ guildDetail, setGuildDetail ] = useState({
+    "ID": null,
+    "Name": "",
+    "Funds": null,
+    "QuestsCompleted": null,
+    "Amt. of Hero": null,
+    "Amt. of Party": null,
+    "Amt. of Quest": null,
+    "Hero": [],
+    "Party": [],
+    "Quest": [],
+  });
+  const herokuUrl = "https://guild-manager.herokuapp.com"
+  const guildDetailUrl = `${herokuUrl}/Guild/Guild_Detail`;
+
+  const getGuildInfo = (heroId)=>{
+    axios.post(guildDetailUrl, { "id": heroId })
+    .then((response) => {
+      console.log(response.data.Response);
+      setGuildDetail(response.data.Response);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   useEffect(() => {
     console.log(localStorage.getItem('currGuild'));
+    const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
+    const heroId = guildDetail.id;
+    getGuildInfo(heroId);
   }, []);
 
   return (
@@ -15,12 +44,12 @@ const Guild = () => {
       <title>Guild</title>
       {/* The title */}
       <div className="guild_title_block">
-        <h1 className="title_text">{JSON.parse(localStorage.getItem('currGuild')).name}</h1>
+        <h1 className="title_text">{guildDetail.Name ?? ""}</h1>
       </div>
       {/* The exit icon */}
       <a href="/">
         <img className='exit'
-          src={require("../img/icon-close.png")}>
+          src={iconCloseImg}>
         </img>
       </a>
       {/* the grid block */}
