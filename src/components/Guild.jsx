@@ -17,7 +17,25 @@ const Guild = () => {
     "Party": [],
     "Quest": [],
   });
-  const [heroDetail, setHeroDetail] = useState();
+  const [heroDetail, setHeroDetail] = useState({
+    "ID": null,
+    "Name": "",
+    "Health": null,
+    "MaxHealth": null,
+    "Exp": null,
+    "Stats": {
+      "STR": null,
+      "CON": null,
+      "DEX": null,
+      "WIS": null,
+      "INT": null,
+      "CHA": null
+    },
+    "Hired?": null,
+    "InParty?": null,
+    "PartyID": null,
+    "Cost": null
+  });
   const [displayStatus, setDisplayStatus] = useState({
     'guild': {display: "inline-block"},
     'hero': {display: "none"},
@@ -37,6 +55,16 @@ const Guild = () => {
       .catch((error) => {
         console.log(error);
       });
+  }
+  const clickGuild = () => {
+    console.log("guild clicked");
+    setDisplayStatus((preStatus) => {
+      return {
+        ...preStatus,
+        'guild': {display: "inline-block"},
+        'hero': {display: "none"}
+      }
+    })
   }
 
   const clickHero = (event) => {
@@ -79,9 +107,10 @@ const Guild = () => {
       <meta charSet="utf-8" />
       <title>Guild</title>
       {/* The title */}
-      <div className="guild_title_block">
+      <button className="guild_title_block"
+        onClick={clickGuild}>
         <h1 className="title_text">{guildDetail.Name ?? ""}</h1>
-      </div>
+      </button>
       {/* The exit icon */}
       <a href="/">
         <img className='exit'
@@ -159,24 +188,24 @@ const Guild = () => {
         </div>
         {/* HERO DETAIL BOARD: display default set as "none"*/}
         <div className="hero_detail" style={displayStatus.hero}>
-          <div id="hero_name">Hero Name</div>
+          <div id="hero_name">{heroDetail.Name}</div>
           <div id="hero_param">
-            STR: 9
-            <br /> DEX: 32
-            <br /> CON: 20
-            <br /> WIS: 34
-            <br /> INT: 12
-            <br /> CHA: 7
-            <br /> INT: 12
-            <br /> CHA: 7
+            STR: {heroDetail.Stats.STR}
+            <br /> DEX: {heroDetail.Stats.DEX}
+            <br /> CON: {heroDetail.Stats.CON}
+            <br /> WIS: {heroDetail.Stats.WIS}
+            <br /> INT: {heroDetail.Stats.INT}
+            <br /> CHA: {heroDetail.Stats.CHA}
+            <br /> INT: {heroDetail.Stats.INT}
+            <br /> CHA: {heroDetail.Stats.CHA}
           </div>
           <div id="hero_health">
             Health:
-            <div style={{ textAlign: 'center' }}>3</div>
+            <div style={{ textAlign: 'center' }}>{heroDetail.Health}</div>
           </div>
           <div id="hero_exp">
             EXP:
-            <div style={{ textAlign: 'center' }}>20</div>
+            <div style={{ textAlign: 'center' }}>{heroDetail.Exp}</div>
           </div>
           <button id="hero_heal">
             HEAL
