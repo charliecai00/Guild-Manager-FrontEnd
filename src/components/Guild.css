@@ -115,20 +115,21 @@
 }
 
 /* Below is the style for hero_detail block inside details box */
-/* .hero_detail{
-  display: none;
-} */
 
 #hero_name{
-  height: 8vh;
-  margin: 15px 15px 15px 15px;
+  height: 6vh;
+  width: 24vw;
+  margin: 25px 15px 5px 15px;
+  padding-top: 10px;
+  padding-left: 10px;
+  padding-bottom: 10px;
   border: solid black;
   background-color: rgb(190, 253, 190);
 }
 
 #hero_param{
   height: 40vh;
-  width: 48%;
+  width: 50%;
   margin: 15px 15px 15px 15px;
   overflow: hidden;
   overflow-y: scroll;
@@ -141,7 +142,7 @@
 
 #hero_health{
   position: absolute;
-  top: 10vh;
+  top: 13%;
   left: 55%;
   height: 18vh;
   width: 30%;
@@ -158,7 +159,7 @@
 
 #hero_exp{
   position: absolute;
-  top: 36%;
+  top: 37.5%;
   left: 55%;
   height: 18vh;
   width: 30%;
