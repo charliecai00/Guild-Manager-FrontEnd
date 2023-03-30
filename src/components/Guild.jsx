@@ -17,8 +17,16 @@ const Guild = () => {
     "Party": [],
     "Quest": [],
   });
+  const [heroDetail, setHeroDetail] = useState();
+  const [displayStatus, setDisplayStatus] = useState({
+    'guild': {display: "inline-block"},
+    'hero': {display: "none"},
+    'party': {display: "none"},
+    'quest': {display: "none"},
+  });
   const herokuUrl = "https://guild-manager.herokuapp.com"
   const guildDetailUrl = `${herokuUrl}/Guild/Guild_Detail`;
+  const heroDetailUrl = `${herokuUrl}/Hero/Hero_Detail`;
 
   const getGuildInfo = (heroId) => {
     axios.post(guildDetailUrl, { "id": heroId })
@@ -31,8 +39,24 @@ const Guild = () => {
       });
   }
 
-  const clickHero = () => {
-    console.log("hero clicked");
+  const clickHero = (event) => {
+    console.log(event.target.value);
+    // send a request to the backend to get the hero info
+    axios.post(heroDetailUrl, { "id":  JSON.parse(event.target.value) })
+      .then((response) => {
+        console.log(response);
+        setHeroDetail(response.data.Response);
+        setDisplayStatus((preStatus) => {
+          return {
+            ...preStatus,
+            'guild': {display: "none"},
+            'hero': {display: "inline-block"},
+          }
+        }
+      )})
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const clickParty = () => {
@@ -78,7 +102,8 @@ const Guild = () => {
               return (
                 <button className="elements-in-scrollable"
                   key={ind}
-                  onClick={clickHero}>
+                  onClick={clickHero}
+                  value={hero.id}>
                   {hero.name}
                 </button>
               )
@@ -124,7 +149,7 @@ const Guild = () => {
       </span>
       {/* The detail box */}
       <span className="details">
-        <div className="guild_status">
+        <div className="guild_status" style={displayStatus.guild}>
           Guild Stats:
           <br /> Funds: {guildDetail.Funds}
           <br /> Heroes: {guildDetail['Amt. of Hero']}
@@ -133,7 +158,7 @@ const Guild = () => {
           <br /> Quests Completed: {guildDetail.QuestsCompleted}
         </div>
         {/* HERO DETAIL BOARD: display default set as "none"*/}
-        <div className="hero_detail">
+        <div className="hero_detail" style={displayStatus.hero}>
           <div id="hero_name">Hero Name</div>
           <div id="hero_param">
             STR: 9
@@ -161,7 +186,7 @@ const Guild = () => {
           </button>
         </div>
         {/* PARTY DETAIL BOARD: display default set as "none"*/}
-        <div className="party_detail">
+        <div className="party_detail" style={displayStatus.party}>
           <div id="party_name">Party Name</div>
           <div id="hero_list">
             John
@@ -178,7 +203,7 @@ const Guild = () => {
           </button>
         </div>
         {/* QUEST DETAIL BOARD: display default set as "none"*/}
-        <div className="quest_detail">
+        <div className="quest_detail" style={displayStatus.quest}>
           <div id="quest_name">Quest Name</div>
           <div id="challenge_list">
             Challenge Lvl: 5
