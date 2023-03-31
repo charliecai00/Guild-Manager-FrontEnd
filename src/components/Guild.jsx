@@ -5,6 +5,12 @@ import React, { useState, useEffect } from 'react';
 import iconCloseImg from '../img/icon-close.png';
 
 const Guild = () => {
+  const [displayStatus, setDisplayStatus] = useState({
+    'guild': {display: "inline-block"},
+    'hero': {display: "none"},
+    'party': {display: "none"},
+    'quest': {display: "none"},
+  });
   const [guildDetail, setGuildDetail] = useState({
     "ID": null,
     "Name": "",
@@ -36,15 +42,25 @@ const Guild = () => {
     "PartyID": null,
     "Cost": null
   });
-  const [displayStatus, setDisplayStatus] = useState({
-    'guild': {display: "inline-block"},
-    'hero': {display: "none"},
-    'party': {display: "none"},
-    'quest': {display: "none"},
+  const [partyDetail, setPartyDetail] = useState({
+    "ID": null,
+    "Name": "",
+    "HeroIDs": []
+  });
+  const [questDetail, setQuestDetail] = useState({
+    "ID": null,
+    "Name": "",
+    "Challenge": [],
+    "Difficulty": null,
+    "Cost": null,
+    "Resell": null,
+    "Purchase": null
   });
   const herokuUrl = "https://guild-manager.herokuapp.com"
   const guildDetailUrl = `${herokuUrl}/Guild/Guild_Detail`;
   const heroDetailUrl = `${herokuUrl}/Hero/Hero_Detail`;
+  const partyDetailUrl = `${herokuUrl}/Party/Party_Detail`;
+  const questDetailUrl = `${herokuUrl}/Quest/Quest_Detail`;
 
   const getGuildInfo = (heroId) => {
     axios.post(guildDetailUrl, { "id": heroId })
@@ -56,13 +72,15 @@ const Guild = () => {
         console.log(error);
       });
   }
+
   const clickGuild = () => {
     console.log("guild clicked");
-    setDisplayStatus((preStatus) => {
+    setDisplayStatus(() => {
       return {
-        ...preStatus,
         'guild': {display: "inline-block"},
-        'hero': {display: "none"}
+        'hero': {display: "none"},
+        'party': {display: "none"},
+        'quest': {display: "none"}
       }
     })
   }
@@ -74,11 +92,12 @@ const Guild = () => {
       .then((response) => {
         console.log(response);
         setHeroDetail(response.data.Response);
-        setDisplayStatus((preStatus) => {
+        setDisplayStatus(() => {
           return {
-            ...preStatus,
             'guild': {display: "none"},
             'hero': {display: "inline-block"},
+            'party': {display: "none"},
+            'quest': {display: "none"}
           }
         }
       )})
@@ -87,12 +106,46 @@ const Guild = () => {
       });
   }
 
-  const clickParty = () => {
-    console.log("party clicked");
+  const clickParty = (event) => {
+    console.log(event.target.value);
+    // send a request to the backend to get the hero info
+    axios.post(partyDetailUrl, { "id":  JSON.parse(event.target.value) })
+      .then((response) => {
+        console.log(response);
+        setPartyDetail(response.data.Response);
+        setDisplayStatus(() => {
+          return {
+            'guild': {display: "none"},
+            'hero': {display: "none"},
+            'party': {display: "inline-block"},
+            'quest': {display: "none"}
+          }
+        }
+      )})
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
-  const clickQuest = () => {
-    console.log("quest clicked");
+  const clickQuest = (event) => {
+    console.log(event.target.value);
+    // send a request to the backend to get the hero info
+    axios.post(questDetailUrl, { "id":  JSON.parse(event.target.value) })
+      .then((response) => {
+        console.log(response);
+        setQuestDetail(response.data.Response);
+        setDisplayStatus(() => {
+          return {
+            'guild': {display: "none"},
+            'hero': {display: "none"},
+            'party': {display: "none"},
+            'quest': {display: "inline-block"}
+          }
+        }
+      )})
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   useEffect(() => {
@@ -149,7 +202,8 @@ const Guild = () => {
               return (
                 <button className="elements-in-scrollable"
                   key={ind}
-                  onClick={clickParty}>
+                  onClick={clickParty}
+                  value={party.id}>
                   {party.name}
                 </button>
               )
@@ -168,7 +222,8 @@ const Guild = () => {
               return (
                 <button className="elements-in-scrollable"
                   key={ind}
-                  onClick={clickQuest}>
+                  onClick={clickQuest}
+                  value={quest.id}>
                   {quest.name}
                 </button>
               )
@@ -216,8 +271,13 @@ const Guild = () => {
         </div>
         {/* PARTY DETAIL BOARD: display default set as "none"*/}
         <div className="party_detail" style={displayStatus.party}>
-          <div id="party_name">Party Name</div>
+          <div id="party_name">{partyDetail.Name}</div>
+          
           <div id="hero_list">
+          {/* {
+            partyDetail.Hero && partyDetail.Hero.map(function (hero, ind) {
+              return (<div{hero.name}/>)
+          } */}
             John
             <br /> Conan
           </div>
@@ -233,9 +293,9 @@ const Guild = () => {
         </div>
         {/* QUEST DETAIL BOARD: display default set as "none"*/}
         <div className="quest_detail" style={displayStatus.quest}>
-          <div id="quest_name">Quest Name</div>
+          <div id="quest_name">{questDetail.Name}</div>
           <div id="challenge_list">
-            Challenge Lvl: 5
+            Challenge Lvl: {questDetail.Difficulty}
           </div>
           <button id="start_quest">
             Start

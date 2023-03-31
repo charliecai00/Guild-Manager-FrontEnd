@@ -42,6 +42,9 @@
   display: flex;
   font-size: 1em;
   height: 10%;
+  width: 84%;
+  margin-top: 5%;
+  margin-left: 5%;
   margin-right: 15%;
   padding-left: 5%;
   border: 1.5px solid black;
@@ -51,11 +54,11 @@
 
 .grid-button {
   position: relative;
+  left: 5%;
   font-size: 1em;
   height: 8%;
   width: 65%;
-  margin-top: 5%;
-  margin-left: 2%;
+  margin-top: 7%;
   background-color: rgb(255, 114, 255);
 }
 
@@ -66,7 +69,7 @@
   overflow-y: scroll;
   border: 1px solid black;
   background-color: rgb(255, 229, 153);
-  margin-top: 10%;
+  margin-top: 7%;
   margin-left: 2%;
   margin-right: 4%;
   margin-bottom: 4%;
@@ -270,7 +273,7 @@
 
 /* Below is the style for quest_detail block inside details box */
 .quest_detail{
-  display: none;
+  width: 100%;
 }
 
 #quest_name{
@@ -282,7 +285,6 @@
 
 #challenge_list{
   height: 50vh;
-  width: 90%;
   margin: 15px 15px 15px 15px;
   overflow: hidden;
   overflow-y: scroll;
@@ -295,7 +297,7 @@
 
 #start_quest{
   height: 8vh;
-  width: 90%;
+  width: 93%;
   margin: 15px 15px 15px 15px;
   overflow: hidden;
   overflow-y: scroll;
@@ -309,7 +311,7 @@
 
 #sell_quest{
   height: 8vh;
-  width: 90%;
+  width: 93%;
   margin: 15px 15px 15px 15px;
   overflow: hidden;
   overflow-y: scroll;
