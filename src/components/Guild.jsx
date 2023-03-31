@@ -155,24 +155,28 @@ const Guild = () => {
     getGuildInfo(heroId);
   }, []);
 
-  return (
-    <div>
-      <meta charSet="utf-8" />
-      <title>Guild</title>
-      {/* The title */}
+  const GuildTitle = () => {
+    return(
       <button className="guild_title_block"
         onClick={clickGuild}>
         <h1 className="title_text">{guildDetail.Name ?? ""}</h1>
       </button>
-      {/* The exit icon */}
+    )
+  };
+
+  const ExitIcon = () => {
+    return(
       <a href="/">
         <img className='exit'
           src={iconCloseImg}>
         </img>
       </a>
-      {/* the grid block */}
-      <span className="grid-container">
-        <div className="grid-item">
+    )
+  };
+
+  const HeroDetail = () => {
+    return(
+      <div className="grid-item">
           <div className="grid-title">
             <div>Heroes</div>
           </div>
@@ -192,7 +196,12 @@ const Guild = () => {
             })}
           </ul>
         </div>
-        <div className="grid-item">
+    )
+  };
+
+  const PartyDetail = () => {
+    return(
+      <div className="grid-item">
           <div className="grid-title">
             <div>Parties</div>
           </div>
@@ -210,7 +219,12 @@ const Guild = () => {
             })}
           </ul>
         </div>
-        <div className="grid-item">
+    )
+  };
+
+  const QuestDetail = () => {
+    return(
+      <div className="grid-item">
           <div className="grid-title">
             <div>Quests</div>
           </div>
@@ -230,10 +244,12 @@ const Guild = () => {
             })}
           </ul>
         </div>
-      </span>
-      {/* The detail box */}
-      <span className="details">
-        <div className="guild_status" style={displayStatus.guild}>
+    )
+  };
+
+  const GuildDetailBoard = () => {
+    return(
+      <div className="guild_detail" style={displayStatus.guild}>
           Guild Stats:
           <br /> Funds: {guildDetail.Funds}
           <br /> Heroes: {guildDetail['Amt. of Hero']}
@@ -241,8 +257,12 @@ const Guild = () => {
           <br /> Quests: {guildDetail['Amt. of Quest']}
           <br /> Quests Completed: {guildDetail.QuestsCompleted}
         </div>
-        {/* HERO DETAIL BOARD: display default set as "none"*/}
-        <div className="hero_detail" style={displayStatus.hero}>
+    )
+  };
+
+  const HeroDetailBoard = () => {
+    return(
+      <div className="hero_detail" style={displayStatus.hero}>
           <div id="hero_name">{heroDetail.Name}</div>
           <div id="hero_param">
             STR: {heroDetail.Stats.STR}
@@ -269,11 +289,14 @@ const Guild = () => {
             FIRE
           </button>
         </div>
-        {/* PARTY DETAIL BOARD: display default set as "none"*/}
-        <div className="party_detail" style={displayStatus.party}>
-          <div id="party_name">{partyDetail.Name}</div>
-          
-          <div id="hero_list">
+    )
+  };
+
+  const PartyDetailBoard = () => {
+    return(
+      <div className="party_detail" style={displayStatus.party}>
+          <div className="party_name">{partyDetail.Name}</div>
+          <div className="hero_list">
           {/* {
             partyDetail.Hero && partyDetail.Hero.map(function (hero, ind) {
               return (<div{hero.name}/>)
@@ -291,8 +314,12 @@ const Guild = () => {
             Disband Hero
           </button>
         </div>
-        {/* QUEST DETAIL BOARD: display default set as "none"*/}
-        <div className="quest_detail" style={displayStatus.quest}>
+    )
+  };
+
+  const QuestDetailBoard = () => {
+    return(
+      <div className="quest_detail" style={displayStatus.quest}>
           <div id="quest_name">{questDetail.Name}</div>
           <div id="challenge_list">
             Challenge Lvl: {questDetail.Difficulty}
@@ -304,6 +331,29 @@ const Guild = () => {
             Sell
           </button>
         </div>
+    )
+  };
+
+  return (
+    <div>
+      <meta charSet="utf-8" />
+      <title>Guild</title>
+      <GuildTitle/>
+      <ExitIcon/>
+
+      {/* the grid block */}
+      <span className="grid-container">
+        <HeroDetail/>
+        <PartyDetail/>
+        <QuestDetail/>
+      </span>
+
+      {/* The detail box */}
+      <span className="details">
+        <GuildDetailBoard/>
+        <HeroDetailBoard/>
+        <PartyDetailBoard/>
+        <QuestDetailBoard/>
       </span>
     </div>
   );
