@@ -35,7 +35,7 @@ const Hero = () => {
         axios.post(HIRE_HERO_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.id })
             .then((response) => {
                 console.log(response.data.Response);
-                if (response.data.Response !== "Hero hired") {
+                if (response.data.Response !== "Success") {
                     alert(response.data.Response);
                     return;
                 } else {

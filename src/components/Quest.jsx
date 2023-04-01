@@ -35,7 +35,7 @@ const Quest = () => {
     axios.post(BUY_QUEST_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.id })
       .then((response) => {
         console.log(response.data.Response);
-        if (response.data.Response !== "Quest purchased") {
+        if (response.data.Response !== "Success") {
           alert(response.data.Response);
           return;
         }else{
@@ -65,7 +65,7 @@ const Quest = () => {
                     <div className="sale_grid">
                         <div className="sale_item">
                             <div className="text vertical_middle">
-                                {quest.Name}: (DIFFICULTY: {quest.Difficulty} COST: ${quest.Cost})
+                                {quest.Name}: (DIFFICULTY: {quest.Difficulty}, COST: ${quest.Cost})
                             </div>
                         </div>
                         <button

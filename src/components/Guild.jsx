@@ -193,15 +193,17 @@ const Guild = () => {
     )
   };
 
+  const createParty = () => {
+    console.log("create party clicked");
+  }
+
   const PartyColumn = () => {
     return (
       <div className="grid-item">
         <div className="grid-title">
           <div>Parties</div>
         </div>
-        <a href="/quest">
-          <button className="grid-button">Create</button>
-        </a>
+        <button className="grid-button" onClick={createParty}>Create</button>
         <ul className="guild_scrollable-list">
           {guildDetail.Party && guildDetail.Party.map(function (party, ind) {
             return (
