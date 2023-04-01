@@ -2,37 +2,44 @@ import './Hero.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { HIRE_HERO_URL, UNEMPLOYED_HEROES_URL } from './url';
+import { ExitIcon } from './exitIcon';
 
 const Hero = () => {
+    const [unemployedHeroes, setUnemployedHeroes] = useState();
+    const [currGuild, setCurrGuild] = useState({ "id": null, "name": null });
+    const [hireStatus, setHireStatus] = useState();
+
     const getInfo = () => {
-        // fetch(UNEMPLOYED_HEROES_URL)
-        //     .then(response => response.json())
-        //     .then(result => {
-        //         console.log(result);
-        //         setGuilds(result.Response);
-        //     })
+        fetch(UNEMPLOYED_HEROES_URL)
+            .then(response => response.json())
+            .then(result => {
+                console.log(result);
+                setUnemployedHeroes(result.Response);
+                const initialHireStatus = result.Response.reduce((status, hero) => {
+                    status[hero.ID] = false;
+                    return status;
+                }, {});
+                console.log(initialHireStatus);
+                setHireStatus(initialHireStatus);
+            })
+            
     }
-    const useEffect = () => {
-        console.log("useEffect");
-    }
+
+    useEffect(() => {
+        getInfo();
+        setCurrGuild(JSON.parse(localStorage.getItem("currGuild")));
+    }, [])
+
     const hireHero = (event) => {
-        //     console.log("Hire hero");
-        //     axios.post(HIRE_HERO_URL, { "id":  JSON.parse(event.target.value) })
-        //   .then((response) => {
-        //     console.log(response);
-        //     setPartyDetail(response.data.Response);
-        //     setDisplayStatus(() => {
-        //       return {
-        //         'guild': {display: "none"},
-        //         'hero': {display: "none"},
-        //         'party': {display: "inline-block"},
-        //         'quest': {display: "none"}
-        //       }
-        //     }
-        //   )})
-        //   .catch((error) => {
-        //     console.log(error);
-        //   });
+        console.log("Hire hero");
+        axios.post(HIRE_HERO_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.id })
+            .then((response) => {
+                console.log(response);
+                setHireStatus({ ...hireStatus, [event.target.value]: true });
+            })
+            .catch((error) => {
+                console.log(error);
+            });
     }
 
     return (
@@ -44,82 +51,32 @@ const Hero = () => {
                     HEROES FOR SALE
                 </div>
             </div>
-            <a href="/guild">
-                <img className='exit'
-                    src={require("../img/icon-close.png")}>
-                </img>
-            </a>
+            <ExitIcon value="/guild"/>
             <section className="scrollable-list">
-                <ul className="sales">
-                    <div className="sale_grid">
-                        <div className="sale_item">
-                            <div className="text vertical_middle">
-                                Paul (STR: 50 DEX: 15 CON: 84 WIS: 90 INT 32: CHA 10) COST: $20
-                            </div>
-                        </div>
-                        <button className="sale_button text">HIRE</button>
-                    </div>
-                </ul>
-                <ul className="sales">
-                    <div className="sale_grid">
-                        <div className="sale_item">
-                            <div className="text vertical_middle">
-                                Paul (STR: 50 DEX: 15 CON: 84 WIS: 90 INT 32: CHA 10) COST: $20
-                            </div>
-                        </div>
-                        <button className="sale_button text">HIRE</button>
-                    </div>
-                </ul>
-                <ul className="sales">
-                    <div className="sale_grid">
-                        <div className="sale_item">
-                            <div className="text vertical_middle">
-                                Paul (STR: 50 DEX: 15 CON: 84 WIS: 90 INT 32: CHA 10) COST: $20
-                            </div>
-                        </div>
-                        <button className="sale_button text">HIRE</button>
-                    </div>
-                </ul>
-                <ul className="sales">
-                    <div className="sale_grid">
-                        <div className="sale_item">
-                            <div className="text vertical_middle">
-                                Paul (STR: 50 DEX: 15 CON: 84 WIS: 90 INT 32: CHA 10) COST: $20
-                            </div>
-                        </div>
-                        <button className="sale_button text">HIRE</button>
-                    </div>
-                </ul>
-                <ul className="sales">
-                    <div className="sale_grid">
-                        <div className="sale_item">
-                            <div className="text vertical_middle">
-                                Paul (STR: 50 DEX: 15 CON: 84 WIS: 90 INT 32: CHA 10) COST: $20
-                            </div>
-                        </div>
-                        <button className="sale_button text">HIRE</button>
-                    </div>
-                </ul>
-                <ul className="sales">
-                    <div className="sale_grid">
-                        <div className="sale_item">
-                            <div className="text vertical_middle">
-                                Paul (STR: 50 DEX: 15 CON: 84 WIS: 90 INT 32: CHA 10) COST: $20
-                            </div>
-                        </div>
-                        <button className="sale_button text">HIRE</button>
-                    </div>
-                </ul>
-                <ul className="sales">
-                    <div className="sale_grid">
-                        <div className="sale_item">
-                            <div className="text vertical_middle">
-                                Paul (STR: 50 DEX: 15 CON: 84 WIS: 90 INT 32: CHA 10) COST: $20
-                            </div>
-                        </div>
-                        <button className="sale_button text">HIRE</button>
-                    </div>
-                </ul>
+                {
+                    unemployedHeroes && unemployedHeroes.map((hero) => {
+                        return (
+                            <ul className="sales" key={hero.ID}>
+                                <div className="sale_grid">
+                                    <div className="sale_item">
+                                        <div className="text vertical_middle">
+                                            {hero.Name} (STR: {hero.Strength} DEX: {hero.Dexterity} CON: {hero.Constitution} WIS: {hero.Wisdom} INT: {hero.Intelligence} CHA: {hero.Charisma}) COST: ${hero.Cost}
+                                        </div>
+                                    </div>
+                                    <button
+                                        className="sale_button text"
+                                        onClick={hireStatus && hireStatus[hero.ID] ? null: hireHero}
+                                        value={hero.ID}
+                                        style={{
+                                            backgroundColor: hireStatus && hireStatus[hero.ID] ? "rgb(255, 149, 0)" : "rgb(255, 255, 0)"
+                                        }}>
+                                           {hireStatus && hireStatus[hero.ID] ? "HIRED" : "HIRE"}
+                                    </button>
+                                </div>
+                            </ul>
+                        )
+                    })
+                }
             </section>
         </div>
     );

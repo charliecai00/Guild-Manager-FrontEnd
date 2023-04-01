@@ -3,7 +3,7 @@ import './shared.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { GUILD_DETAIL_URL, HERO_DETAIL_URL, PARTY_DETAIL_URL, QUEST_DETAIL_URL  } from './url';
-import iconCloseImg from '../img/icon-close.png';
+import { ExitIcon } from './exitIcon';
 
 const Guild = () => {
   const [displayStatus, setDisplayStatus] = useState({
@@ -84,7 +84,7 @@ const Guild = () => {
   const clickHero = (event) => {
     console.log(event.target.value);
     // send a request to the backend to get the hero info
-    axios.post(HERO_DETAIL_URL, { "id":  JSON.parse(event.target.value) })
+    axios.post(HERO_DETAIL_URL, { "id":  parseInt(event.target.value) })
       .then((response) => {
         console.log(response);
         setHeroDetail(response.data.Response);
@@ -147,8 +147,8 @@ const Guild = () => {
   useEffect(() => {
     console.log(localStorage.getItem('currGuild'));
     const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
-    const heroId = guildDetail.id;
-    getGuildInfo(heroId);
+    const guildId = guildDetail.id;
+    getGuildInfo(guildId);
   }, []);
 
   const GuildTitle = () => {
@@ -157,16 +157,6 @@ const Guild = () => {
         onClick={clickGuild}>
         <h1 className="title_text">{guildDetail.Name ?? ""}</h1>
       </button>
-    )
-  };
-
-  const ExitIcon = () => {
-    return(
-      <a href="/">
-        <img className='exit'
-          src={iconCloseImg}>
-        </img>
-      </a>
     )
   };
 
@@ -355,7 +345,7 @@ const Guild = () => {
       <meta charSet="utf-8" />
       <title>Guild</title>
       <GuildTitle/>
-      <ExitIcon/>
+      <ExitIcon value='/'/>
 
       {/* the grid block */}
       <span className="grid-container">
