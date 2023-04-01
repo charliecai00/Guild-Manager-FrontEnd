@@ -1,9 +1,52 @@
 import './Quest.css';
-import React from 'react';
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { BUY_QUEST_URL, UNSOLD_QUEST_URL } from './url';
+import { ExitIcon } from './exitIcon';
 
 const Quest = () => {
+  const [unsoldQuest, setUnsoldQuest] = useState();
+  const [currGuild, setCurrGuild] = useState({ "id": null, "name": null });
+  const [purchaseStatus, setPurchaseStatus] = useState();
+
+  const getInfo = () => {
+    fetch(UNSOLD_QUEST_URL)
+      .then(response => response.json())
+      .then(result => {
+        console.log(result);
+        setUnsoldQuest(result.Response);
+        const initialPurchaseStatus = result.Response.reduce((status, quest) => {
+          status[quest.ID] = false;
+          return status;
+        }, {});
+        console.log(initialPurchaseStatus);
+        setPurchaseStatus(initialPurchaseStatus);
+      })
+
+  }
+
+  useEffect(() => {
+    getInfo();
+    setCurrGuild(JSON.parse(localStorage.getItem("currGuild")));
+  }, [])
+
+  const buyQuest = (event) => {
+    console.log("Buy Quest");
+    axios.post(BUY_QUEST_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.id })
+      .then((response) => {
+        console.log(response.data.Response);
+        if (response.data.Response !== "Quest purchased") {
+          alert(response.data.Response);
+          return;
+        }else{
+          setPurchaseStatus({ ...purchaseStatus, [event.target.value]: true });
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   return (
     <div>
       <meta charSet="utf-8" />
@@ -13,12 +56,32 @@ const Quest = () => {
           QUESTS FOR SALE
         </div>
       </div>
-      <a href="/guild">
-        <img className='exit'
-          src={require("../img/icon-close.png")}>
-        </img>
-      </a>
+      <ExitIcon value="/guild" />
       <section className="scrollable-list">
+        {
+          unsoldQuest && unsoldQuest.map((quest) => {
+            return (
+                <ul className="sales" key={quest.ID}>
+                    <div className="sale_grid">
+                        <div className="sale_item">
+                            <div className="text vertical_middle">
+                                {quest.Name}: (DIFFICULTY: {quest.Difficulty} COST: ${quest.Cost})
+                            </div>
+                        </div>
+                        <button
+                            className="sale_button text"
+                            onClick={purchaseStatus && purchaseStatus[quest.ID] ? null : buyQuest}
+                            value={quest.ID}
+                            style={{
+                                backgroundColor: purchaseStatus && purchaseStatus[quest.ID] ? "rgb(255, 149, 0)" : "rgb(255, 255, 0)"
+                            }}>
+                            {purchaseStatus && purchaseStatus[quest.ID] ? "BOUGHT" : "BUY"}
+                        </button>
+                    </div>
+                </ul>
+            )
+        })
+        }
         <ul className="sales">
           <div className="sale_grid">
             <div className="sale_item">

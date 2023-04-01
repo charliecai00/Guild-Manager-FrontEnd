@@ -22,7 +22,7 @@ const Hero = () => {
                 console.log(initialHireStatus);
                 setHireStatus(initialHireStatus);
             })
-            
+
     }
 
     useEffect(() => {
@@ -34,8 +34,13 @@ const Hero = () => {
         console.log("Hire hero");
         axios.post(HIRE_HERO_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.id })
             .then((response) => {
-                console.log(response);
-                setHireStatus({ ...hireStatus, [event.target.value]: true });
+                console.log(response.data.Response);
+                if (response.data.Response !== "Hero hired") {
+                    alert(response.data.Response);
+                    return;
+                } else {
+                    setHireStatus({ ...hireStatus, [event.target.value]: true });
+                }
             })
             .catch((error) => {
                 console.log(error);
@@ -51,7 +56,7 @@ const Hero = () => {
                     HEROES FOR SALE
                 </div>
             </div>
-            <ExitIcon value="/guild"/>
+            <ExitIcon value="/guild" />
             <section className="scrollable-list">
                 {
                     unemployedHeroes && unemployedHeroes.map((hero) => {
@@ -60,17 +65,17 @@ const Hero = () => {
                                 <div className="sale_grid">
                                     <div className="sale_item">
                                         <div className="text vertical_middle">
-                                            {hero.Name} (STR: {hero.Strength} DEX: {hero.Dexterity} CON: {hero.Constitution} WIS: {hero.Wisdom} INT: {hero.Intelligence} CHA: {hero.Charisma}) COST: ${hero.Cost}
+                                            {hero.Name} (STR: {hero.Strength} DEX: {hero.Dexterity} CON: {hero.Constitution} WIS: {hero.Wisdom} INT: {hero.Intelligence} CHA: {hero.Charisma} COST: ${hero.Cost})
                                         </div>
                                     </div>
                                     <button
                                         className="sale_button text"
-                                        onClick={hireStatus && hireStatus[hero.ID] ? null: hireHero}
+                                        onClick={hireStatus && hireStatus[hero.ID] ? null : hireHero}
                                         value={hero.ID}
                                         style={{
                                             backgroundColor: hireStatus && hireStatus[hero.ID] ? "rgb(255, 149, 0)" : "rgb(255, 255, 0)"
                                         }}>
-                                           {hireStatus && hireStatus[hero.ID] ? "HIRED" : "HIRE"}
+                                        {hireStatus && hireStatus[hero.ID] ? "HIRED" : "HIRE"}
                                     </button>
                                 </div>
                             </ul>
