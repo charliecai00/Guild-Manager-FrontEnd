@@ -2,6 +2,7 @@ import './Guild.css';
 import './shared.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { GUILD_DETAIL_URL, HERO_DETAIL_URL, PARTY_DETAIL_URL, QUEST_DETAIL_URL  } from './url';
 import iconCloseImg from '../img/icon-close.png';
 
 const Guild = () => {
@@ -56,14 +57,9 @@ const Guild = () => {
     "Resell": null,
     "Purchase": null
   });
-  const herokuUrl = "https://guild-manager.herokuapp.com"
-  const guildDetailUrl = `${herokuUrl}/Guild/Guild_Detail`;
-  const heroDetailUrl = `${herokuUrl}/Hero/Hero_Detail`;
-  const partyDetailUrl = `${herokuUrl}/Party/Party_Detail`;
-  const questDetailUrl = `${herokuUrl}/Quest/Quest_Detail`;
 
   const getGuildInfo = (heroId) => {
-    axios.post(guildDetailUrl, { "id": heroId })
+    axios.post(GUILD_DETAIL_URL, { "id": heroId })
       .then((response) => {
         console.log(response.data.Response);
         setGuildDetail(response.data.Response);
@@ -88,7 +84,7 @@ const Guild = () => {
   const clickHero = (event) => {
     console.log(event.target.value);
     // send a request to the backend to get the hero info
-    axios.post(heroDetailUrl, { "id":  JSON.parse(event.target.value) })
+    axios.post(HERO_DETAIL_URL, { "id":  JSON.parse(event.target.value) })
       .then((response) => {
         console.log(response);
         setHeroDetail(response.data.Response);
@@ -109,7 +105,7 @@ const Guild = () => {
   const clickParty = (event) => {
     console.log(event.target.value);
     // send a request to the backend to get the hero info
-    axios.post(partyDetailUrl, { "id":  JSON.parse(event.target.value) })
+    axios.post(PARTY_DETAIL_URL, { "id":  JSON.parse(event.target.value) })
       .then((response) => {
         console.log(response);
         setPartyDetail(response.data.Response);
@@ -130,7 +126,7 @@ const Guild = () => {
   const clickQuest = (event) => {
     console.log(event.target.value);
     // send a request to the backend to get the hero info
-    axios.post(questDetailUrl, { "id":  JSON.parse(event.target.value) })
+    axios.post(QUEST_DETAIL_URL, { "id":  JSON.parse(event.target.value) })
       .then((response) => {
         console.log(response);
         setQuestDetail(response.data.Response);
@@ -174,14 +170,19 @@ const Guild = () => {
     )
   };
 
-  const HeroDetail = () => {
+  const hireFunc = (event) => {
+    // event.preventDefault();
+    console.log("hire clicked");
+  }
+
+  const HeroColumn = () => {
     return(
       <div className="grid-item">
           <div className="grid-title">
             <div>Heroes</div>
           </div>
           <a href="/hero">
-            <button className="grid-button" >Hire</button>
+            <button className="grid-button" onClick={hireFunc}>Hire</button>
           </a>
           <ul className="guild_scrollable-list">
             {guildDetail.Hero && guildDetail.Hero.map(function (hero, ind) {
@@ -199,7 +200,7 @@ const Guild = () => {
     )
   };
 
-  const PartyDetail = () => {
+  const PartyColumn = () => {
     return(
       <div className="grid-item">
           <div className="grid-title">
@@ -222,7 +223,7 @@ const Guild = () => {
     )
   };
 
-  const QuestDetail = () => {
+  const QuestColumn = () => {
     return(
       <div className="grid-item">
           <div className="grid-title">
@@ -322,7 +323,7 @@ const Guild = () => {
       <div className="quest_detail" style={displayStatus.quest}>
           <div id="quest_name">{questDetail.Name}</div>
           <div id="challenge_list">
-            Challenge Lvl: {questDetail.Difficulty}
+            Difficulty Lvl: {questDetail.Difficulty}
           </div>
           <button id="start_quest">
             Start
@@ -343,9 +344,9 @@ const Guild = () => {
 
       {/* the grid block */}
       <span className="grid-container">
-        <HeroDetail/>
-        <PartyDetail/>
-        <QuestDetail/>
+        <HeroColumn/>
+        <PartyColumn/>
+        <QuestColumn/>
       </span>
 
       {/* The detail box */}

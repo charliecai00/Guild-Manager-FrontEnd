@@ -64,21 +64,23 @@
 
 .guild_scrollable-list {
   position: relative;
-  height: 66%;
+  height: 64%;
   overflow: hidden;
   overflow-y: scroll;
   border: 1px solid black;
   background-color: rgb(255, 229, 153);
-  margin-top: 7%;
+  margin-top: 9%;
   margin-left: 2%;
   margin-right: 4%;
   margin-bottom: 4%;
   padding-left: 3%;
   padding-right: 3%;
+  padding-top: 3%;
 }
 
 .elements-in-scrollable {
   position: relative;
+  margin-bottom: 4%;
   padding-left: 0;
   font-size: 0.8em;
   background-color: transparent;
@@ -234,7 +236,7 @@
 #add_hero{
   height: 8vh;
   width: 90%;
-  margin: 15px 15px 15px 15px;
+  margin: 10px 15px 10px 15px;
   overflow: hidden;
   overflow-y: scroll;
   border: solid black;
@@ -248,7 +250,7 @@
 #remove_hero{
   height: 8vh;
   width: 90%;
-  margin: 15px 15px 15px 15px;
+  margin: 15px 15px 10px 15px;
   overflow: hidden;
   overflow-y: scroll;
   border: solid black;

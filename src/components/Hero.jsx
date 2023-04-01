@@ -1,9 +1,29 @@
 import './Hero.css';
 import React from 'react';
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
+import axios from 'axios';
 
 const Hero = () => {
+
+    const hireHero = () => {
+        console.log("Hire hero");
+    //     axios.post(hireHeroUrl, { "id":  JSON.parse(event.target.value) })
+    //   .then((response) => {
+    //     console.log(response);
+    //     setPartyDetail(response.data.Response);
+    //     setDisplayStatus(() => {
+    //       return {
+    //         'guild': {display: "none"},
+    //         'hero': {display: "none"},
+    //         'party': {display: "inline-block"},
+    //         'quest': {display: "none"}
+    //       }
+    //     }
+    //   )})
+    //   .catch((error) => {
+    //     console.log(error);
+    //   });
+    }
+
     return (
         <div>
             <meta charSet="utf-8" />
