@@ -1,15 +1,12 @@
 import './GuildManager.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { RELOAD_URL, CREATE_GUILD_URL  } from './url';
 
 const GuildManager = () => {
-  const herokuUrl = "https://guild-manager.herokuapp.com"
-  const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
+  // const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
   const [guilds, setGuilds] = useState();
   const [formData, setFormData] = useState("");
-
-  const reloadUrl = `${herokuUrl}/Guild/Reload`;
-  const createGuildUrl = `${herokuUrl}/Guild/Create`;
 
   const handleClick = (event) => {
     localStorage.setItem("currGuild", event.target.value);
@@ -17,7 +14,7 @@ const GuildManager = () => {
   };
 
   function pullJson() {
-    fetch(reloadUrl)
+    fetch(RELOAD_URL)
       .then(response => response.json())
       .then(result => {
         console.log(result);
@@ -31,7 +28,7 @@ const GuildManager = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    axios.post(createGuildUrl, { "Name": formData })
+    axios.post(CREATE_GUILD_URL, { "Name": formData })
       .then((response) => {
         console.log(response.data);
         pullJson();

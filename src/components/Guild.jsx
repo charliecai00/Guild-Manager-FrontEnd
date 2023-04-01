@@ -293,25 +293,40 @@ const Guild = () => {
     )
   };
 
+  const addHero = (event) => {
+    event.preventDefault();
+    console.log("add clicked");
+  }
+
+  const removeHero = (event) => {
+    event.preventDefault();
+    console.log("remove clicked");
+  }
+
+  const disbandHero = (event) => {
+    event.preventDefault();
+    console.log("disband clicked");
+  }
+
   const PartyDetailBoard = () => {
     return(
       <div className="party_detail" style={displayStatus.party}>
           <div className="party_name">{partyDetail.Name}</div>
           <div className="hero_list">
-          {/* {
+            <h4>Heroes</h4>
+          {
             partyDetail.Hero && partyDetail.Hero.map(function (hero, ind) {
-              return (<div{hero.name}/>)
-          } */}
-            John
-            <br /> Conan
+              return <div key={ind} style={{fontSize:"25px", border: "1px solid black"}}>{hero.name+",\n"}</div>
+            })
+          }
           </div>
-          <button id="add_hero">
+          <button id="add_hero" onClick={addHero}>
             Add Hero
           </button>
-          <button id="remove_hero">
+          <button id="remove_hero" onClick={removeHero}>
             Remove Hero
           </button>
-          <button id="disband_hero">
+          <button id="disband_hero" onClick={disbandHero}>
             Disband Hero
           </button>
         </div>

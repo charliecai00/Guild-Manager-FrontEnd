@@ -1,27 +1,38 @@
 import './Hero.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { HIRE_HERO_URL, UNEMPLOYED_HEROES_URL } from './url';
 
 const Hero = () => {
-
-    const hireHero = () => {
-        console.log("Hire hero");
-    //     axios.post(hireHeroUrl, { "id":  JSON.parse(event.target.value) })
-    //   .then((response) => {
-    //     console.log(response);
-    //     setPartyDetail(response.data.Response);
-    //     setDisplayStatus(() => {
-    //       return {
-    //         'guild': {display: "none"},
-    //         'hero': {display: "none"},
-    //         'party': {display: "inline-block"},
-    //         'quest': {display: "none"}
-    //       }
-    //     }
-    //   )})
-    //   .catch((error) => {
-    //     console.log(error);
-    //   });
+    const getInfo = () => {
+        // fetch(UNEMPLOYED_HEROES_URL)
+        //     .then(response => response.json())
+        //     .then(result => {
+        //         console.log(result);
+        //         setGuilds(result.Response);
+        //     })
+    }
+    const useEffect = () => {
+        console.log("useEffect");
+    }
+    const hireHero = (event) => {
+        //     console.log("Hire hero");
+        //     axios.post(HIRE_HERO_URL, { "id":  JSON.parse(event.target.value) })
+        //   .then((response) => {
+        //     console.log(response);
+        //     setPartyDetail(response.data.Response);
+        //     setDisplayStatus(() => {
+        //       return {
+        //         'guild': {display: "none"},
+        //         'hero': {display: "none"},
+        //         'party': {display: "inline-block"},
+        //         'quest': {display: "none"}
+        //       }
+        //     }
+        //   )})
+        //   .catch((error) => {
+        //     console.log(error);
+        //   });
     }
 
     return (
