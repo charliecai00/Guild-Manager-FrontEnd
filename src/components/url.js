@@ -11,6 +11,7 @@ const UNEMPLOYED_HEROES_URL = `${HEROKU_URL}/Hero/Unemployed`;
 const HIRE_HERO_URL = `${HEROKU_URL}/Hero/Hire`;
 const UNSOLD_QUEST_URL = `${HEROKU_URL}/Quest/Unsold_Quest`;
 const BUY_QUEST_URL = `${HEROKU_URL}/Quest/Buy`;
+const CREATE_PARTY_URL = `${HEROKU_URL}/Party/Add_Party`;
 
 export {
     GUILD_DETAIL_URL, 
@@ -22,5 +23,6 @@ export {
     UNEMPLOYED_HEROES_URL,
     HIRE_HERO_URL,
     UNSOLD_QUEST_URL,
-    BUY_QUEST_URL
+    BUY_QUEST_URL,
+    CREATE_PARTY_URL
 }

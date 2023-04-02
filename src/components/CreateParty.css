@@ -1,0 +1,33 @@
+.pop_up_box{
+    /* display: none; */
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width:60vw;
+    height: 50vh;
+    background-color: rgb(255, 149, 0);
+    z-index: 1;
+    /* box-shadow: offsetX offsetY blurRadius spreadRadius color inset; */
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+.pop_up_title{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 10vh;
+    background-color:  rgb(255, 255, 0);
+    z-index: 1;
+}
+
+.pop_up_done{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%vw;
+    height: 20%vh;
+    background-color: rgb(255, 114, 255);
+    z-index: 1;
+}
+

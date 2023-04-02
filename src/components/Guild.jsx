@@ -4,6 +4,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { GUILD_DETAIL_URL, HERO_DETAIL_URL, PARTY_DETAIL_URL, QUEST_DETAIL_URL } from './url';
 import { ExitIcon } from './exitIcon';
+import { CreateParty } from './CreateParty';
 
 const Guild = () => {
   const [displayStatus, setDisplayStatus] = useState({
@@ -57,6 +58,8 @@ const Guild = () => {
     "Resell": null,
     "Purchase": null
   });
+
+  const [createPartyDisplay, setCreatePartyDisplay] = useState({ display: "none" });
 
   const getGuildInfo = (heroId) => {
     axios.post(GUILD_DETAIL_URL, { "id": heroId })
@@ -195,6 +198,7 @@ const Guild = () => {
 
   const createParty = () => {
     console.log("create party clicked");
+    setCreatePartyDisplay({ display: "inline-block" });
   }
 
   const PartyColumn = () => {
@@ -368,9 +372,10 @@ const Guild = () => {
         <PartyDetailBoard />
         <QuestDetailBoard />
       </span>
+
+      <CreateParty style={createPartyDisplay} />
     </div>
   );
 };
-
 
 export default Guild;
