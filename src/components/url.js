@@ -12,6 +12,8 @@ const HIRE_HERO_URL = `${HEROKU_URL}/Hero/Hire`;
 const UNSOLD_QUEST_URL = `${HEROKU_URL}/Quest/Unsold_Quest`;
 const BUY_QUEST_URL = `${HEROKU_URL}/Quest/Buy`;
 const CREATE_PARTY_URL = `${HEROKU_URL}/Party/Add_Party`;
+const HEAL_HERO_URL = `${HEROKU_URL}/Hero/Heal`;
+const FIRE_HERO_URL = `${HEROKU_URL}/Hero/Fire`;
 
 export {
     GUILD_DETAIL_URL, 
@@ -24,5 +26,7 @@ export {
     HIRE_HERO_URL,
     UNSOLD_QUEST_URL,
     BUY_QUEST_URL,
-    CREATE_PARTY_URL
+    CREATE_PARTY_URL,
+    HEAL_HERO_URL,
+    FIRE_HERO_URL
 }

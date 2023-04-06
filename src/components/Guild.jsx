@@ -2,7 +2,12 @@ import './Guild.css';
 import './shared.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { GUILD_DETAIL_URL, HERO_DETAIL_URL, PARTY_DETAIL_URL, QUEST_DETAIL_URL } from './url';
+import { GUILD_DETAIL_URL,
+        HERO_DETAIL_URL,
+        PARTY_DETAIL_URL,
+        QUEST_DETAIL_URL,
+        HEAL_HERO_URL,
+        FIRE_HERO_URL} from './url';
 import { ExitIcon } from './exitIcon';
 import { CreateParty } from './CreateParty';
 
@@ -262,6 +267,34 @@ const Guild = () => {
     )
   };
 
+  const healHero = (event) => {
+    const heroId = event.target.value;
+    axios.post(HEAL_HERO_URL, { "id": parseInt(heroId), "guild_id": guildDetail.ID})
+      .then((response) => {
+        console.log(response.data.Response);
+        if (response.data.Response !== "Success"){
+          alert(response.data.Response);
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  const fireHero = (event) => {
+    const heroId = event.target.value;
+    axios.post(FIRE_HERO_URL, { "id": heroId, "guild_id": guildDetail.ID})
+      .then((response) => {
+        console.log(response.data.Response);
+        if (response.data.Response !== "Success"){
+          alert(response.data.Response);
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
   const HeroDetailBoard = () => {
     return (
       <div className="hero_detail" style={displayStatus.hero}>
@@ -284,10 +317,10 @@ const Guild = () => {
           EXP:
           <div style={{ textAlign: 'center' }}>{heroDetail.Exp}</div>
         </div>
-        <button id="hero_heal">
+        <button id="hero_heal" value={heroDetail.ID} onClick={healHero}>
           HEAL
         </button>
-        <button id="hero_fire">
+        <button id="hero_fire" value={heroDetail.ID} onClick={fireHero}>
           FIRE
         </button>
       </div>
