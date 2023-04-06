@@ -406,7 +406,7 @@ const Guild = () => {
         <QuestDetailBoard />
       </span>
 
-      <CreateParty style={createPartyDisplay} />
+      <CreateParty guild_id={guildDetail.ID} style={createPartyDisplay} />
     </div>
   );
 };

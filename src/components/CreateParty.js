@@ -8,9 +8,12 @@ export const CreateParty = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post(CREATE_PARTY_URL, { "Name": formData })
+        axios.post(CREATE_PARTY_URL, { "Name": formData, "guild_id": props.guild_id})
             .then((response) => {
                 console.log(response.data);
+                if (response.data.Response !== "Success"){
+                    alert(response.data.Response);
+                };
             })
             .catch((error) => {
                 console.log(error);
