@@ -39,7 +39,11 @@ export const CreateParty = (props) => {
                 </form>
             </div>
             <a href="/guild">
-                <div className="pop_up_done" > DONE </div>
+                <div className="pop_up_done" > 
+                    <div style={{position: "relative", left: "10%", top: "20%", fontSize:"35px"}}>
+                        DONE 
+                    </div>
+                </div>
             </a>
         </div>
     )
