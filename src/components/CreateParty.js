@@ -39,7 +39,7 @@ export const CreateParty = (props) => {
 
     return (
         <div className="pop_up_box" style={props.style}>
-            <ExitIcon value="/guild" />
+            {/* <ExitIcon value="/guild" /> */}
             <div className="pop_up_title">
                 Create Party
             </div>
