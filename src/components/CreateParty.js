@@ -1,7 +1,6 @@
 import "./CreateParty.css";
 import axios from 'axios';
 import React, { useState } from 'react';
-import { ExitIcon } from "./exitIcon";
 import { CREATE_PARTY_URL } from "./url";
 
 export const CreateParty = (props) => {
@@ -23,27 +22,22 @@ export const CreateParty = (props) => {
         setFormData(value);
     };
 
-    const InputForm = () => {
-        return (
-            <div className="new_guild">
-                <form onSubmit={handleSubmit}>
-                    <label id="new_guild_text" htmlFor="new_guild_name">New Guild:</label>
-                    <span>
-                        <input name="new_guild_name" id="new_guild_text" type="text" value={formData} onChange={handleInputChange} />
-                    </span>
-                </form>
-            </div>
-        )
-    }
-
-
     return (
         <div className="pop_up_box" style={props.style}>
             {/* <ExitIcon value="/guild" /> */}
             <div className="pop_up_title">
-                Create Party
+                <div style={{position: "absolute", left:"38%", top: "20%"}}>
+                    Create Party
+                </div>
             </div>
-            <InputForm />
+            <div className="new_party">
+                <form onSubmit={handleSubmit}>
+                    <label id="new_party_text" htmlFor="new_party_name">New Party:</label>
+                    <span>
+                        <input name="new_party_name" id="new_party_text" type="text" value={formData} onChange={handleInputChange} />
+                    </span>
+                </form>
+            </div>
             <a href="/guild">
                 <div className="pop_up_done" > DONE </div>
             </a>

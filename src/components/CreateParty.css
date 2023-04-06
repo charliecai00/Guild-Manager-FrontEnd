@@ -1,8 +1,8 @@
 .pop_up_box{
     /* display: none; */
     position: absolute;
-    /* top: 20%; */
-    /* left: 20%; */
+    top: 20%;
+    left: 20%;
     width:60vw;
     height: 50vh;
     background-color: rgb(255, 149, 0);
@@ -12,11 +12,12 @@
 }
 
 .pop_up_title{
-    position: absolute;
+    position: relative;
     top: 0;
     left: 0;
     width: 60vw;
     height: 10vh;
+    font-size: 36px;
     background-color:  rgb(255, 255, 0);
     z-index: 1;
 }
@@ -32,18 +33,23 @@
 }
 
 
-.new_guild {
+.new_party {
     margin-top: 7vh;
     margin-left: 25vw;
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-left: 8%;
+    padding-left: 0px;
     width: 50vw;
-    height: 12vh;
+    height: 15vh;
     border: 1.5px solid black;
     background-color: rgb(255, 114, 255);
     display: flex;
     align-items: center;
 }
 
-#new_guild_text {
+#new_party_text {
     font-weight: normal;
     font-family: Arial;
     font-size: 35px;
