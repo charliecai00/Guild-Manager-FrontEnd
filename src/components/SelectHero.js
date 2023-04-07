@@ -1,4 +1,5 @@
 import "./pop_up_window.css";
+// import './shared.css';
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ExitIcon } from "./ExitIcon";
@@ -35,7 +36,7 @@ export const SelectHero = (props) => {
 
     return (
         <div className="pop_up_box" style={props.style}>
-            <ExitIcon cvalue="/guild" />
+            <ExitIcon value="/guild" />
             <div className="pop_up_title">
                 <div style={{ position: "absolute", left: "38%", top: "20%" }}>
                     Select Hero

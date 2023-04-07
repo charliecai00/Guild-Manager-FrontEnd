@@ -21,7 +21,8 @@
     position: absolute;
     height: 38px;
     width: 38px;
-    top: 0px;
-    right: 0px;
+    top: 0%;
+    right: 0%;
+    z-index: 2;
     /* margin-left: 80%; */
 }

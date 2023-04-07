@@ -71,12 +71,3 @@
     padding-right: 3%;
     padding-top: 3%;
 }
-
-.exit{
-    position: absolute;
-    height: 38px;
-    width: 38px;
-    top: 0px;
-    right: 0px;
-    /* margin-left: 80%; */
-}
