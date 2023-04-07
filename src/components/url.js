@@ -14,6 +14,10 @@ const BUY_QUEST_URL = `${HEROKU_URL}/Quest/Buy`;
 const CREATE_PARTY_URL = `${HEROKU_URL}/Party/Add_Party`;
 const HEAL_HERO_URL = `${HEROKU_URL}/Hero/Heal`;
 const FIRE_HERO_URL = `${HEROKU_URL}/Hero/Fire`;
+const ADD_HERO_TO_PARTY_URL = `${HEROKU_URL}/Party/Add_Hero`;
+const REMOVE_HERO_FROM_PARTY_URL = `${HEROKU_URL}/Party/Remove_Hero`;
+const DISBAND_PARTY_URL = `${HEROKU_URL}/Party/Disband_Party`;
+const HERO_NOT_IN_PARTY_URL = `${HEROKU_URL}/Hero/Hero_Not_In_Party`;
 
 export {
     GUILD_DETAIL_URL, 
@@ -28,5 +32,9 @@ export {
     BUY_QUEST_URL,
     CREATE_PARTY_URL,
     HEAL_HERO_URL,
-    FIRE_HERO_URL
+    FIRE_HERO_URL,
+    ADD_HERO_TO_PARTY_URL,
+    REMOVE_HERO_FROM_PARTY_URL,
+    DISBAND_PARTY_URL,
+    HERO_NOT_IN_PARTY_URL
 }

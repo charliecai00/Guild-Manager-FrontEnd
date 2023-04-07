@@ -7,9 +7,13 @@ import { GUILD_DETAIL_URL,
         PARTY_DETAIL_URL,
         QUEST_DETAIL_URL,
         HEAL_HERO_URL,
-        FIRE_HERO_URL} from './url';
-import { ExitIcon } from './exitIcon';
+        FIRE_HERO_URL,
+        ADD_HERO_TO_PARTY_URL,
+        REMOVE_HERO_FROM_PARTY_URL,
+        DISBAND_PARTY_URL} from './url';
+import { ExitIcon } from './ExitIcon';
 import { CreateParty } from './CreateParty';
+import { SelectHero } from './SelectHero';
 
 const Guild = () => {
   const [displayStatus, setDisplayStatus] = useState({
@@ -65,6 +69,7 @@ const Guild = () => {
   });
 
   const [createPartyDisplay, setCreatePartyDisplay] = useState({ display: "none" });
+  const [selectHeroDisplay, setSelectHeroDisplay] = useState({ display: "none" });
 
   const getGuildInfo = (heroId) => {
     axios.post(GUILD_DETAIL_URL, { "id": heroId })
@@ -156,7 +161,7 @@ const Guild = () => {
   }
 
   useEffect(() => {
-    console.log(localStorage.getItem('currGuild'));
+    console.log("current guild:"+localStorage.getItem('currGuild'));
     const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
     const guildId = guildDetail.id;
     getGuildInfo(guildId);
@@ -288,6 +293,15 @@ const Guild = () => {
         console.log(response.data.Response);
         if (response.data.Response !== "Success"){
           alert(response.data.Response);
+        }else{
+          setDisplayStatus(() => {
+            return {
+              'guild': { display: "inline-block" },
+              'hero': { display: "none" },
+              'party': { display: "none" },
+              'quest': { display: "none" }
+            }
+          })
         };
       })
       .catch((error) => {
@@ -327,9 +341,8 @@ const Guild = () => {
     )
   };
 
-  const addHero = (event) => {
-    event.preventDefault();
-    console.log("add clicked");
+  const selectHero = (event) => {
+    setSelectHeroDisplay({ display: "inline-block" });
   }
 
   const removeHero = (event) => {
@@ -354,14 +367,14 @@ const Guild = () => {
             })
           }
         </div>
-        <button id="add_hero" onClick={addHero}>
+        <button id="add_hero" onClick={selectHero}>
           Add Hero
         </button>
         <button id="remove_hero" onClick={removeHero}>
           Remove Hero
         </button>
         <button id="disband_hero" onClick={disbandHero}>
-          Disband Hero
+          Disband
         </button>
       </div>
     )
@@ -388,8 +401,8 @@ const Guild = () => {
     <div>
       <meta charSet="utf-8" />
       <title>Guild</title>
-      <GuildTitle />
       <ExitIcon value='/' />
+      <GuildTitle />
 
       {/* the grid block */}
       <span className="grid-container">
@@ -407,6 +420,7 @@ const Guild = () => {
       </span>
 
       <CreateParty guild_id={guildDetail.ID} style={createPartyDisplay} />
+      <SelectHero party_id={partyDetail.ID} style={selectHeroDisplay} />
     </div>
   );
 };

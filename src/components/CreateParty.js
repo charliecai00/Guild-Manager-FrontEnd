@@ -1,4 +1,4 @@
-import "./CreateParty.css";
+import "./pop_up_window.css";
 import axios from 'axios';
 import React, { useState } from 'react';
 import { CREATE_PARTY_URL } from "./url";
@@ -8,6 +8,7 @@ export const CreateParty = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        console.log("guild id for adding the party: "+props.guild_id);
         axios.post(CREATE_PARTY_URL, { "Name": formData, "guild_id": props.guild_id})
             .then((response) => {
                 console.log(response.data);
@@ -27,7 +28,6 @@ export const CreateParty = (props) => {
 
     return (
         <div className="pop_up_box" style={props.style}>
-            {/* <ExitIcon value="/guild" /> */}
             <div className="pop_up_title">
                 <div style={{position: "absolute", left:"38%", top: "20%"}}>
                     Create Party

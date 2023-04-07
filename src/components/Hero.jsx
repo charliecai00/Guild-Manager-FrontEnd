@@ -2,7 +2,7 @@ import './Hero.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { HIRE_HERO_URL, UNEMPLOYED_HEROES_URL } from './url';
-import { ExitIcon } from './exitIcon';
+import { ExitIcon } from './ExitIcon';
 
 const Hero = () => {
     const [unemployedHeroes, setUnemployedHeroes] = useState();

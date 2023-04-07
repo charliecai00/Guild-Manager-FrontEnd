@@ -18,10 +18,10 @@
 }
 
 .exit{
-    display: inline-block;
     position: absolute;
     height: 38px;
     width: 38px;
-    top: 20px;
-    right: 20px;
+    top: 0px;
+    right: 0px;
+    /* margin-left: 80%; */
 }
