@@ -6,7 +6,7 @@
 }
 
 .background{
-    background-image: url("../img/playfield.jpeg");
+    background-image: url("../img/playfield.jpg");
     /* Adjust the size of the background image. */
     background-size: cover;
     /* Set the position of the background image. */
@@ -20,7 +20,6 @@
 
 .sword_art {
     display: inline-block;
-    background-image: url('../img/cover.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;

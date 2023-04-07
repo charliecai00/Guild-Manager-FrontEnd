@@ -1,7 +1,9 @@
 import './DoingQuest.css';
 import React, {useEffect} from 'react';
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
+import giant from '../img/giant.jpg';
+import castle from '../img/castle.jpg';
+import dragon from '../img/dragon.jpg';
+
 
 const DoingQuest = () => {
 
@@ -11,13 +13,25 @@ const DoingQuest = () => {
     }, 2200);
   }, []);
 
+  const backgroundImages = [
+    giant,
+    castle,
+    dragon
+  ];
+  
+  const getRandomBackgroundImage = () => {
+    const randomIndex = Math.floor(Math.random() * backgroundImages.length);
+    return backgroundImages[randomIndex];
+  };
+
   return (
     <div className='background'>
       <meta charSet="utf-8" />
       <title>DoingQuest</title>
       <div className="page">
         {/* The title */}
-        <div className="sword_art"></div>
+        <div className="sword_art" style={{
+            backgroundImage: `url(${getRandomBackgroundImage()})`}}></div>
       </div>
       {/* <div className="page">
         <div className="info">
