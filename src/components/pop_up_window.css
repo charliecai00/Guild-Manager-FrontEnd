@@ -71,3 +71,12 @@
     padding-right: 3%;
     padding-top: 3%;
 }
+
+.select_hero_scrollable {
+    position: relative;
+    margin-bottom: 2%;
+    padding-left: 0;
+    font-size: 1.5em;
+    background-color: transparent;
+    width: 100%;
+}

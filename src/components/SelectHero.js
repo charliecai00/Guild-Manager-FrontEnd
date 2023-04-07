@@ -46,7 +46,7 @@ export const SelectHero = (props) => {
                 {
                     heroes.map((hero, ind) => {
                         return (
-                            <button className="elements-in-scrollable"
+                            <button className="select_hero_scrollable"
                                 key={ind}
                                 onClick={addHero}
                                 value={hero.ID}>
@@ -56,13 +56,6 @@ export const SelectHero = (props) => {
                     })
                 }
             </div>
-            {/* <a href="/guild">
-                <div className="pop_up_done" >
-                    <div style={{ position: "relative", left: "10%", top: "20%", fontSize: "35px" }}>
-                        DONE
-                    </div>
-                </div>
-            </a> */}
         </div>
     )
 }

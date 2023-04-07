@@ -5,11 +5,25 @@
     text-align: center;
 }
 
+.background{
+    background-image: url("../img/playfield.jpeg");
+    /* Adjust the size of the background image. */
+    background-size: cover;
+    /* Set the position of the background image. */
+    background-position: center;
+    /* Repeat or not repeat the background image. */
+    background-repeat: no-repeat;
+    /* Set the width and height of the element. */
+    width: 100vw;
+    height: 100vh;
+}
+
 .sword_art {
-    /* position: absolute;
-    left: 45vw;
-    top: 10vh; */
     display: inline-block;
+    background-image: url('../img/cover.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     margin-top: 14vh;
     height: 25vh;
     width: 23vw;
@@ -30,22 +44,34 @@
     font-size: 35px;
 }
 
-.bar_left {
-    display: inline-block;
-    margin-top: 7vh;
-    height: 10vh;
-    width: 60vw;
-    border: solid black;
-    background-color:  rgb(255, 149, 0);
+@keyframes extendBar {
+    0% {
+        width: 0;
+    }
+    100% {
+        width: 50%;
+    }
 }
 
-.bar_right {
+.bar_animation {
+    display: inline-block;
+    position: absolute;
+    left: 25vw;
+    margin-top: 17vh;
+    height: 10vh;
+    animation: extendBar 2s linear forwards;
+    z-index: 1;
+    border: solid black;
+    background-color: rgb(255, 149, 0);
+}
+
+.bar {
     display: inline-block;
     position: relative;
-    left: -6px;
-    margin-top: 7vh;
+    left: 25vw;
+    margin-top: 17vh;
     height: 10vh;
-    width: 20vw;
+    width: 50%;
     border: solid black;
-    background-color:  rgb(255, 255, 0);
+    background-color: rgb(255, 255, 0);
 }
