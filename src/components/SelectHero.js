@@ -2,7 +2,7 @@ import "./pop_up_window.css";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { ExitIcon } from "./ExitIcon";
-import { HERO_NOT_IN_PARTY_URL, ADD_HERO_TO_PARTY_URL } from "./url";
+import { HERO_NOT_IN_PARTY_URL, ADD_HERO_TO_PARTY_URL, REMOVE_HERO_FROM_PARTY_URL } from "./url";
 
 export const SelectHero = (props) => {
     const [heroes, setHeroes] = useState([]);
@@ -35,6 +35,21 @@ export const SelectHero = (props) => {
             });
     }
 
+    const removeHero = (event) => {
+        const heroId = event.target.value;
+        axios.post(REMOVE_HERO_FROM_PARTY_URL, { "id": heroId, "party_id": props.party_id })
+            .then((response) => {
+                console.log(response.data.Response);
+                if (response.data.Response !== "Success") {
+                    alert(response.data.Response);
+                };
+                getHeroes();
+            })
+            .catch((error) => {
+                console.log(error);
+            });
+    }
+
     return (
         <div className="pop_up_box" style={props.style}>
             <ExitIcon value="/guild" />
@@ -49,7 +64,7 @@ export const SelectHero = (props) => {
                         return (
                             <button className="select_hero_scrollable"
                                 key={ind}
-                                onClick={addHero}
+                                onClick={props.function === "add" ? addHero : removeHero}
                                 value={hero.ID}>
                                 {hero.Name}
                             </button>

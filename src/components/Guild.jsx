@@ -8,8 +8,6 @@ import { GUILD_DETAIL_URL,
         QUEST_DETAIL_URL,
         HEAL_HERO_URL,
         FIRE_HERO_URL,
-        ADD_HERO_TO_PARTY_URL,
-        REMOVE_HERO_FROM_PARTY_URL,
         DISBAND_PARTY_URL} from './url';
 import { ExitIcon } from './ExitIcon';
 import { CreateParty } from './CreateParty';
@@ -69,6 +67,7 @@ const Guild = () => {
   });
 
   const [createPartyDisplay, setCreatePartyDisplay] = useState({ display: "none" });
+  const [selectHeroFunction, setSelectHeroFunction] = useState("");
   const [selectHeroDisplay, setSelectHeroDisplay] = useState({ display: "none" });
 
   const getGuildInfo = (heroId) => {
@@ -341,13 +340,14 @@ const Guild = () => {
     )
   };
 
-  const selectHero = (event) => {
+  const selectHero = () => {
+    setSelectHeroFunction('add');
     setSelectHeroDisplay({ display: "inline-block" });
   }
 
-  const removeHero = (event) => {
-    event.preventDefault();
-    console.log("remove clicked");
+  const removeHero = () => {
+    setSelectHeroFunction('remove');
+    setSelectHeroDisplay({ display: "inline-block" });
   }
 
   const disbandHero = (event) => {
@@ -420,7 +420,7 @@ const Guild = () => {
       </span>
 
       <CreateParty guild_id={guildDetail.ID} style={createPartyDisplay} />
-      <SelectHero party_id={partyDetail.ID} style={selectHeroDisplay} />
+      <SelectHero party_id={partyDetail.ID} function={selectHeroFunction} style={selectHeroDisplay} />
     </div>
   );
 };
