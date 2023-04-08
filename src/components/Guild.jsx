@@ -20,6 +20,7 @@ const Guild = () => {
     'party': { display: "none" },
     'quest': { display: "none" },
   });
+  const [currGuild, setCurrGuild] = useState();
   const [guildDetail, setGuildDetail] = useState({
     "ID": null,
     "Name": "",
@@ -81,6 +82,14 @@ const Guild = () => {
       });
   }
 
+  useEffect(() => {
+    console.log("current guild:"+localStorage.getItem('currGuild'));
+    const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
+    const guildId = guildDetail.id;
+    setCurrGuild(guildId);
+    getGuildInfo(guildId);
+  }, []);
+  
   const clickGuild = () => {
     console.log("guild clicked");
     setDisplayStatus(() => {
@@ -158,13 +167,6 @@ const Guild = () => {
         console.log(error);
       });
   }
-
-  useEffect(() => {
-    console.log("current guild:"+localStorage.getItem('currGuild'));
-    const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
-    const guildId = guildDetail.id;
-    getGuildInfo(guildId);
-  }, []);
 
   const GuildTitle = () => {
     return (
@@ -350,9 +352,19 @@ const Guild = () => {
     setSelectHeroDisplay({ display: "inline-block" });
   }
 
-  const disbandHero = (event) => {
-    event.preventDefault();
-    console.log("disband clicked");
+  const disbandHero = () => {
+    axios.post( DISBAND_PARTY_URL, { "id": partyDetail.ID })
+            .then((response) => {
+                console.log(response.data.Response);
+                if (response.data.Response !== "Success") {
+                    alert(response.data.Response);
+                    return;
+                };
+                getGuildInfo(currGuild);
+            })
+            .catch((error) => {
+                console.log(error);
+            });
   }
 
   const PartyDetailBoard = () => {
