@@ -18,6 +18,8 @@ const ADD_HERO_TO_PARTY_URL = `${HEROKU_URL}/Party/Add_Hero`;
 const REMOVE_HERO_FROM_PARTY_URL = `${HEROKU_URL}/Party/Remove_Hero`;
 const DISBAND_PARTY_URL = `${HEROKU_URL}/Party/Disband_Party`;
 const HERO_NOT_IN_PARTY_URL = `${HEROKU_URL}/Hero/Hero_Not_In_Party`;
+const SELL_QUEST_URL = `${HEROKU_URL}/Quest/Sell`;
+const START_QUEST_URL = `${HEROKU_URL}/Quest/Start`;
 
 export {
     GUILD_DETAIL_URL, 
@@ -36,5 +38,7 @@ export {
     ADD_HERO_TO_PARTY_URL,
     REMOVE_HERO_FROM_PARTY_URL,
     DISBAND_PARTY_URL,
-    HERO_NOT_IN_PARTY_URL
+    HERO_NOT_IN_PARTY_URL,
+    SELL_QUEST_URL,
+    START_QUEST_URL
 }

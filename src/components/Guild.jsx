@@ -2,13 +2,16 @@ import './Guild.css';
 import './shared.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { GUILD_DETAIL_URL,
-        HERO_DETAIL_URL,
-        PARTY_DETAIL_URL,
-        QUEST_DETAIL_URL,
-        HEAL_HERO_URL,
-        FIRE_HERO_URL,
-        DISBAND_PARTY_URL} from './url';
+import {
+  GUILD_DETAIL_URL,
+  HERO_DETAIL_URL,
+  PARTY_DETAIL_URL,
+  QUEST_DETAIL_URL,
+  HEAL_HERO_URL,
+  FIRE_HERO_URL,
+  DISBAND_PARTY_URL,
+  SELL_QUEST_URL
+} from './url';
 import { ExitIcon } from './ExitIcon';
 import { CreateParty } from './CreateParty';
 import { SelectHero } from './SelectHero';
@@ -82,12 +85,12 @@ const Guild = () => {
   }
 
   useEffect(() => {
-    console.log("current guild:"+localStorage.getItem('currGuild'));
+    console.log("current guild:" + localStorage.getItem('currGuild'));
     const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
     const guildId = guildDetail.id;
     getGuildInfo(guildId);
   }, []);
-  
+
   const clickGuild = () => {
     console.log("guild clicked");
     setDisplayStatus(() => {
@@ -102,7 +105,6 @@ const Guild = () => {
 
   const clickHero = (event) => {
     console.log(event.target.value);
-    // send a request to the backend to get the hero info
     axios.post(HERO_DETAIL_URL, { "id": parseInt(event.target.value) })
       .then((response) => {
         console.log(response);
@@ -124,7 +126,6 @@ const Guild = () => {
 
   const clickParty = (event) => {
     console.log(event.target.value);
-    // send a request to the backend to get the hero info
     axios.post(PARTY_DETAIL_URL, { "id": JSON.parse(event.target.value) })
       .then((response) => {
         console.log(response);
@@ -145,8 +146,6 @@ const Guild = () => {
   }
 
   const clickQuest = (event) => {
-    console.log(event.target.value);
-    // send a request to the backend to get the hero info
     axios.post(QUEST_DETAIL_URL, { "id": JSON.parse(event.target.value) })
       .then((response) => {
         console.log(response);
@@ -274,10 +273,10 @@ const Guild = () => {
 
   const healHero = (event) => {
     const heroId = event.target.value;
-    axios.post(HEAL_HERO_URL, { "id": parseInt(heroId), "guild_id": guildDetail.ID})
+    axios.post(HEAL_HERO_URL, { "id": parseInt(heroId), "guild_id": guildDetail.ID })
       .then((response) => {
         console.log(response.data.Response);
-        if (response.data.Response !== "Success"){
+        if (response.data.Response !== "Success") {
           alert(response.data.Response);
         };
       })
@@ -288,12 +287,12 @@ const Guild = () => {
 
   const fireHero = (event) => {
     const heroId = event.target.value;
-    axios.post(FIRE_HERO_URL, { "id": heroId, "guild_id": guildDetail.ID})
+    axios.post(FIRE_HERO_URL, { "id": heroId, "guild_id": guildDetail.ID })
       .then((response) => {
         console.log(response.data.Response);
-        if (response.data.Response !== "Success"){
+        if (response.data.Response !== "Success") {
           alert(response.data.Response);
-        }else{
+        } else {
           setDisplayStatus(() => {
             return {
               'guild': { display: "inline-block" },
@@ -353,18 +352,18 @@ const Guild = () => {
   }
 
   const disbandHero = () => {
-    axios.post( DISBAND_PARTY_URL, { "id": partyDetail.ID })
-            .then((response) => {
-                console.log(response.data.Response);
-                if (response.data.Response !== "Success") {
-                    alert(response.data.Response);
-                    return;
-                };
-                getGuildInfo(guildDetail.ID);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+    axios.post(DISBAND_PARTY_URL, { "id": partyDetail.ID })
+      .then((response) => {
+        console.log(response.data.Response);
+        if (response.data.Response !== "Success") {
+          alert(response.data.Response);
+          return;
+        };
+        getGuildInfo(guildDetail.ID);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   const PartyDetailBoard = () => {
@@ -392,6 +391,24 @@ const Guild = () => {
     )
   };
 
+  const sellQuest = () => {
+    axios.post(SELL_QUEST_URL, { "id": questDetail.ID, "guild_id": guildDetail.ID })
+      .then((response) => {
+        console.log(response.data.Response);
+        if (response.data.Response !== "Success") {
+          alert(response.data.Response);
+          return;
+        };
+        getGuildInfo(guildDetail.ID);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  const startQuest = () => {
+  }
+
   const QuestDetailBoard = () => {
     return (
       <div className="quest_detail" style={displayStatus.quest}>
@@ -399,10 +416,10 @@ const Guild = () => {
         <div id="challenge_list">
           Difficulty Lvl: {questDetail.Difficulty}
         </div>
-        <button id="start_quest">
+        <button id="start_quest" onClick={startQuest}>
           Start
         </button>
-        <button id="sell_quest">
+        <button id="sell_quest" onClick={sellQuest}>
           Sell
         </button>
       </div>
@@ -432,13 +449,13 @@ const Guild = () => {
       </span>
 
       <CreateParty guild_id={guildDetail.ID}
-                  refresh_guild={getGuildInfo}
-                  style={createPartyDisplay} />
+        refresh_guild={getGuildInfo}
+        style={createPartyDisplay} />
       <SelectHero guild_id={guildDetail.ID}
-                  refresh_guild={getGuildInfo}
-                  party_id={partyDetail.ID}
-                  function={selectHeroFunction}
-                  style={selectHeroDisplay} />
+        refresh_guild={getGuildInfo}
+        party_id={partyDetail.ID}
+        function={selectHeroFunction}
+        style={selectHeroDisplay} />
     </div>
   );
 };
