@@ -1,9 +1,11 @@
 import './QuestReport.css';
 import React from 'react';
-import { Link } from "react-router-dom";
-import { Button } from 'react-bootstrap';
+import { useLocation } from 'react-router-dom';
 
 const QuestReport = () => {
+    const location = useLocation();
+    const questReport = location.state?.questReport;
+
     return (
         <div>
             <meta charSet="utf-8" />

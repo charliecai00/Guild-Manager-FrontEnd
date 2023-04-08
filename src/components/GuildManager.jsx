@@ -1,16 +1,17 @@
 import './GuildManager.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { RELOAD_URL, CREATE_GUILD_URL  } from './url';
 
 const GuildManager = () => {
-  // const apiUrl = "http://127.0.0.1:8000/Guild/Reload";
+  const navigate = useNavigate();
   const [guilds, setGuilds] = useState();
   const [formData, setFormData] = useState("");
 
   const handleClick = (event) => {
     localStorage.setItem("currGuild", event.target.value);
-    window.location.href = '/guild';
+    navigate('/guild');
   };
 
   function pullJson() {

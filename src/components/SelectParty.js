@@ -1,10 +1,12 @@
 import "./pop_up_window.css";
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { ExitIcon } from "./ExitIcon";
 import { START_QUEST_URL } from "./url";
 
 export const SelectParty = ({ quest_id, parties, style }) => {
+    const navigate = useNavigate();
     const [localStyle, setLocalStyle] = useState(style);
     useEffect(() => {
         setLocalStyle(style);
@@ -19,6 +21,9 @@ export const SelectParty = ({ quest_id, parties, style }) => {
               alert(response.data.Response);
             }else{
                 alert("Quest Started!");
+                setTimeout(() => {
+                    navigate('/doingQuest', { state: { questReport: response.data.Response } });
+                  }, 1000);
             };
           })
           .catch((error) => {

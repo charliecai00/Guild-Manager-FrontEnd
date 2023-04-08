@@ -1,12 +1,14 @@
 import iconCloseImg from '../img/icon-close.png';
+import { useNavigate } from 'react-router-dom';
 
 export const ExitIcon = ({value, onClick}) => {
+  const navigate = useNavigate();
   const handleClick = () => {
     if (onClick) {
       onClick();
     };
     if (value) {
-      window.location.href = value;
+      navigate(value);
     }
   };
 

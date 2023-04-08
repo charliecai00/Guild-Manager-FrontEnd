@@ -1,15 +1,19 @@
 import './DoingQuest.css';
 import React, {useEffect} from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import giant from '../img/giant.jpg';
 import castle from '../img/castle.jpg';
 import dragon from '../img/dragon.jpg';
 
-
 const DoingQuest = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const questReport = location.state?.questReport;
 
   useEffect(() => {
     setTimeout(() => {
-      window.location.href = '/questReport';
+      navigate('/questReport', {state: {message: questReport}});
     }, 2200);
   }, []);
 
@@ -33,12 +37,6 @@ const DoingQuest = () => {
         <div className="sword_art" style={{
             backgroundImage: `url(${getRandomBackgroundImage()})`}}></div>
       </div>
-      {/* <div className="page">
-        <div className="info">
-          Doing Quest
-        </div>
-      </div> */}
-
       <div className="bar" />
       <div className="bar_animation" />
 
