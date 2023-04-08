@@ -1,18 +1,24 @@
 import "./pop_up_window.css";
 import axios from 'axios';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CREATE_PARTY_URL } from "./url";
 
 export const CreateParty = (props) => {
     const [formData, setFormData] = useState("");
+    const [style, setStyle] = useState(props.style);
+    // console.log("style: "+style.display);
+
+    useEffect(() => {
+        setStyle(props.style);
+    }, [props.style]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        console.log("guild id for adding the party: "+props.guild_id);
-        axios.post(CREATE_PARTY_URL, { "Name": formData, "guild_id": props.guild_id})
+        console.log("guild id for adding the party: " + props.guild_id);
+        axios.post(CREATE_PARTY_URL, { "Name": formData, "guild_id": props.guild_id })
             .then((response) => {
                 console.log(response.data);
-                if (response.data.Response !== "Success"){
+                if (response.data.Response !== "Success") {
                     alert(response.data.Response);
                 };
             })
@@ -26,10 +32,15 @@ export const CreateParty = (props) => {
         setFormData(value);
     };
 
+    const done = () => {
+        props.refresh_guild(props.guild_id)
+        setStyle({ display: "none" });
+    }
+
     return (
-        <div className="pop_up_box" style={props.style}>
+        <div className="pop_up_box" style={style}>
             <div className="pop_up_title">
-                <div style={{position: "absolute", left:"38%", top: "20%"}}>
+                <div style={{ position: "absolute", left: "38%", top: "20%" }}>
                     Create Party
                 </div>
             </div>
@@ -41,13 +52,12 @@ export const CreateParty = (props) => {
                     </span>
                 </form>
             </div>
-            <a href="/guild">
-                <div className="pop_up_done" > 
-                    <div style={{position: "relative", left: "10%", top: "20%", fontSize:"35px"}}>
-                        DONE 
-                    </div>
+            <div className="pop_up_done" >
+                <div style={{ position: "relative", left: "10%", top: "20%", fontSize: "35px" }}
+                onClick={done}>
+                    DONE
                 </div>
-            </a>
+            </div>
         </div>
     )
 }

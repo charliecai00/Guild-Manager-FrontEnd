@@ -6,19 +6,22 @@ import { HERO_NOT_IN_PARTY_URL, ADD_HERO_TO_PARTY_URL, REMOVE_HERO_FROM_PARTY_UR
 
 export const SelectHero = (props) => {
     const [heroes, setHeroes] = useState([]);
-    console.log("party id: " + props.party_id);
+    const [style, setStyle] = useState(props.style);
+
     const getHeroes = () => {
         axios.post(HERO_NOT_IN_PARTY_URL, { "id": parseInt(props.party_id) })
             .then((response) => {
                 setHeroes(response.data.Response);
             })
     }
+
     useEffect(() => {
         if (props.party_id === undefined || props.party_id === null) {
             return;
         }
         getHeroes();
-    }, [props.party_id]);
+        setStyle(props.style)
+    }, [props.style]);
 
     const addHero = (event) => {
         const heroId = event.target.value;
@@ -50,9 +53,14 @@ export const SelectHero = (props) => {
             });
     }
 
+    const exit = () => {
+        props.refresh_guild(props.guild_id)
+        setStyle({ display: "none" });
+    }
+
     return (
-        <div className="pop_up_box" style={props.style}>
-            <ExitIcon value="/guild" />
+        <div className="pop_up_box" style={style}>
+            <ExitIcon onClick={exit}/>
             <div className="pop_up_title">
                 <div style={{ position: "absolute", left: "38%", top: "20%" }}>
                     Select Hero

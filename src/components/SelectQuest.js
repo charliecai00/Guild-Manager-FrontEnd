@@ -35,7 +35,7 @@ export const SelectQuest = (props) => {
 
     return (
         <div className="pop_up_box" style={props.style}>
-            <ExitIcon value="/guild" />
+            <ExitIcon value="/guild"/>
             <div className="pop_up_title">
                 <div style={{ position: "absolute", left: "38%", top: "20%" }}>
                     Select Quest

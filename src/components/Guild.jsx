@@ -20,7 +20,6 @@ const Guild = () => {
     'party': { display: "none" },
     'quest': { display: "none" },
   });
-  const [currGuild, setCurrGuild] = useState();
   const [guildDetail, setGuildDetail] = useState({
     "ID": null,
     "Name": "",
@@ -74,7 +73,7 @@ const Guild = () => {
   const getGuildInfo = (heroId) => {
     axios.post(GUILD_DETAIL_URL, { "id": heroId })
       .then((response) => {
-        console.log(response.data.Response);
+        console.log("getGuildInfo called to refresh guild info");
         setGuildDetail(response.data.Response);
       })
       .catch((error) => {
@@ -86,7 +85,6 @@ const Guild = () => {
     console.log("current guild:"+localStorage.getItem('currGuild'));
     const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
     const guildId = guildDetail.id;
-    setCurrGuild(guildId);
     getGuildInfo(guildId);
   }, []);
   
@@ -210,6 +208,7 @@ const Guild = () => {
   const createParty = () => {
     console.log("create party clicked");
     setCreatePartyDisplay({ display: "inline-block" });
+    // getGuildInfo(guildDetail.ID);
   }
 
   const PartyColumn = () => {
@@ -342,7 +341,8 @@ const Guild = () => {
     )
   };
 
-  const selectHero = () => {
+  const addHero = () => {
+    console.log("add hero clicked");
     setSelectHeroFunction('add');
     setSelectHeroDisplay({ display: "inline-block" });
   }
@@ -360,7 +360,7 @@ const Guild = () => {
                     alert(response.data.Response);
                     return;
                 };
-                getGuildInfo(currGuild);
+                getGuildInfo(guildDetail.ID);
             })
             .catch((error) => {
                 console.log(error);
@@ -379,7 +379,7 @@ const Guild = () => {
             })
           }
         </div>
-        <button id="add_hero" onClick={selectHero}>
+        <button id="add_hero" onClick={addHero}>
           Add Hero
         </button>
         <button id="remove_hero" onClick={removeHero}>
@@ -431,8 +431,14 @@ const Guild = () => {
         <QuestDetailBoard />
       </span>
 
-      <CreateParty guild_id={guildDetail.ID} style={createPartyDisplay} />
-      <SelectHero party_id={partyDetail.ID} function={selectHeroFunction} style={selectHeroDisplay} />
+      <CreateParty guild_id={guildDetail.ID}
+                  refresh_guild={getGuildInfo}
+                  style={createPartyDisplay} />
+      <SelectHero guild_id={guildDetail.ID}
+                  refresh_guild={getGuildInfo}
+                  party_id={partyDetail.ID}
+                  function={selectHeroFunction}
+                  style={selectHeroDisplay} />
     </div>
   );
 };
