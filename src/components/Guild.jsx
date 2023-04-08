@@ -15,6 +15,7 @@ import {
 import { ExitIcon } from './ExitIcon';
 import { CreateParty } from './CreateParty';
 import { SelectHero } from './SelectHero';
+import { SelectParty } from './SelectParty';
 
 const Guild = () => {
   const [displayStatus, setDisplayStatus] = useState({
@@ -72,6 +73,7 @@ const Guild = () => {
   const [createPartyDisplay, setCreatePartyDisplay] = useState({ display: "none" });
   const [selectHeroFunction, setSelectHeroFunction] = useState("");
   const [selectHeroDisplay, setSelectHeroDisplay] = useState({ display: "none" });
+  const [selectPartyDisplay, setSelectPartyDisplay] = useState({ display: "none" });
 
   const getGuildInfo = (heroId) => {
     axios.post(GUILD_DETAIL_URL, { "id": heroId })
@@ -341,7 +343,6 @@ const Guild = () => {
   };
 
   const addHero = () => {
-    console.log("add hero clicked");
     setSelectHeroFunction('add');
     setSelectHeroDisplay({ display: "inline-block" });
   }
@@ -407,6 +408,7 @@ const Guild = () => {
   }
 
   const startQuest = () => {
+    setSelectPartyDisplay({ display: "inline-block" });
   }
 
   const QuestDetailBoard = () => {
@@ -456,6 +458,9 @@ const Guild = () => {
         party_id={partyDetail.ID}
         function={selectHeroFunction}
         style={selectHeroDisplay} />
+      <SelectParty quest_id={questDetail.ID}
+        parties={guildDetail.Party}
+        style={selectPartyDisplay} />
     </div>
   );
 };

@@ -70,7 +70,7 @@ export const SelectHero = (props) => {
                 {
                     heroes.map((hero, ind) => {
                         return (
-                            <button className="select_hero_scrollable"
+                            <button className="select_scrollable"
                                 key={ind}
                                 onClick={props.function === "add" ? addHero : removeHero}
                                 value={hero.ID}>
