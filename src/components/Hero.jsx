@@ -65,7 +65,13 @@ const Hero = () => {
                                 <div className="sale_grid">
                                     <div className="sale_item">
                                         <div className="text vertical_middle">
-                                            {hero.Name} (STR: {hero.Strength} DEX: {hero.Dexterity} CON: {hero.Constitution} WIS: {hero.Wisdom} INT: {hero.Intelligence} CHA: {hero.Charisma} COST: ${hero.Cost})
+                                            {hero.Name} (Strength: {hero.Stats.STR} &nbsp;
+                                            Dexterity: {hero.Stats.DEX} &nbsp;
+                                            Constitution: {hero.Stats.CON} &nbsp;
+                                            Wisdom: {hero.Stats.WIS} &nbsp;
+                                            Intelligence: {hero.Stats.INT} &nbsp;
+                                            Charisma: {hero.Stats.CHA} &nbsp;
+                                            COST: ${hero.Cost})
                                         </div>
                                     </div>
                                     <button
