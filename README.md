@@ -2,7 +2,7 @@
 
 ## Project Statement
 
-This repository contains the React front-end for the [Guild Manager] ()
+This repository contains the React front-end for the [Guild Manager](https://github.com/charliecai00/Guild-Manager-Capstone). This repository is automatically deployed to Heroku @ https://guild-manager-frontend.herokuapp.com/.
 
 ## Available Scripts
 
