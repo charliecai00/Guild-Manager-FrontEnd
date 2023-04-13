@@ -9,7 +9,7 @@ export const SelectHero = (props) => {
     const [style, setStyle] = useState(props.style);
 
     const getHeroes = () => {
-        axios.post(HERO_NOT_IN_PARTY_URL, { "id": parseInt(props.party_id) })
+        axios.post(HERO_NOT_IN_PARTY_URL, { "id": parseInt(props.guild_id) })
             .then((response) => {
                 setHeroes(response.data.Response);
             })

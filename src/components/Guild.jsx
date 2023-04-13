@@ -128,7 +128,7 @@ const Guild = () => {
 
   const clickParty = (event) => {
     console.log(event.target.value);
-    axios.post(PARTY_DETAIL_URL, { "id": JSON.parse(event.target.value) })
+    axios.post(PARTY_DETAIL_URL, { "id": parseInt(event.target.value) })
       .then((response) => {
         console.log(response);
         setPartyDetail(response.data.Response);
@@ -319,8 +319,6 @@ const Guild = () => {
           <br /> DEX: {heroDetail.Stats.DEX}
           <br /> CON: {heroDetail.Stats.CON}
           <br /> WIS: {heroDetail.Stats.WIS}
-          <br /> INT: {heroDetail.Stats.INT}
-          <br /> CHA: {heroDetail.Stats.CHA}
           <br /> INT: {heroDetail.Stats.INT}
           <br /> CHA: {heroDetail.Stats.CHA}
         </div>

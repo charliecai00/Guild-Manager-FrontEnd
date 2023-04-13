@@ -2,7 +2,7 @@ import './Quest.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BUY_QUEST_URL, UNSOLD_QUEST_URL } from './url';
-import { ExitIcon } from './exitIcon';
+import { ExitIcon } from './ExitIcon';
 
 const Quest = () => {
   const [unsoldQuest, setUnsoldQuest] = useState();
@@ -65,7 +65,7 @@ const Quest = () => {
                     <div className="sale_grid">
                         <div className="sale_item">
                             <div className="text vertical_middle">
-                                {quest.Name}: (DIFFICULTY: {quest.Difficulty}, COST: ${quest.Cost})
+                                {quest.Name}: (ChallengeLevel: {quest.ChallengeLevel}, Cost: ${quest.Cost})
                             </div>
                         </div>
                         <button
