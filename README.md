@@ -1,3 +1,4 @@
+![last commit](https://img.shields.io/github/last-commit/charliecai00/Guild-Manager-FrontEnd?style=for-the-badge)
 # Guild Manager Web Interface
 
 ## Project Statement
