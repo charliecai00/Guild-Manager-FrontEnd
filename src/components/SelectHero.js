@@ -25,7 +25,7 @@ export const SelectHero = (props) => {
 
     const addHero = (event) => {
         const heroId = event.target.value;
-        axios.post(ADD_HERO_TO_PARTY_URL, { "id": heroId, "party_id": props.party_id })
+        axios.post(ADD_HERO_TO_PARTY_URL, { "id": parseInt(heroId), "party_id": parseInt(props.party_id) })
             .then((response) => {
                 console.log(response.data.Response);
                 if (response.data.Response !== "Success") {
