@@ -56,12 +56,6 @@ export const CreateParty = (props) => {
                     </span>
                 </form>
             </div>
-            {/* <div className="pop_up_done" >
-                <div style={{ position: "relative", left: "10%", top: "20%", fontSize: "35px" }}
-                onClick={done}>
-                    DONE
-                </div>
-            </div> */}
         </div>
     )
 }

@@ -179,32 +179,33 @@
   background-color: rgb(255, 255, 0);
 }
 
-#hero_heal{
+.hero_options{
   height: 10vh;
   width: 90%;
   margin: 15px 15px 15px 15px;
   overflow: hidden;
   overflow-y: scroll;
   border: solid black;
-  font-size: 30px;
+  font-size: 25px;
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   background-color:rgb(255, 229, 153);
 }
 
-#hero_fire{
-  height: 10vh;
+.do_option{
+  height: 6vh;
   width: 90%;
   margin: 15px 15px 15px 15px;
   overflow: hidden;
   overflow-y: scroll;
   border: solid black;
-  font-size: 30px;
+  font-size: 25px;
   padding-top: 10px;
   padding-left: 10px;
   padding-right: 10px;
   background-color:rgb(255, 229, 153);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Below is the style for party_detail block inside details box */

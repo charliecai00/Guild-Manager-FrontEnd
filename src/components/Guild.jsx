@@ -3,8 +3,10 @@ import './shared.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import {
+  HEROKU_URL,
   GUILD_DETAIL_URL,
   HERO_DETAIL_URL,
+  HERO_OPTIONS_URL,
   PARTY_DETAIL_URL,
   QUEST_DETAIL_URL,
   HEAL_HERO_URL,
@@ -74,12 +76,25 @@ const Guild = () => {
   const [selectHeroFunction, setSelectHeroFunction] = useState("");
   const [selectHeroDisplay, setSelectHeroDisplay] = useState({ display: "none" });
   const [selectPartyDisplay, setSelectPartyDisplay] = useState({ display: "none" });
-
-  const getGuildInfo = (heroId) => {
-    axios.post(GUILD_DETAIL_URL, { "id": heroId })
+  const [heroOptions, setHeroOptions] = useState({});
+  const [choosenHeroOption, setChoosenHeroOption] = useState();
+  
+  const getGuildInfo = (guildId) => {
+    axios.post(GUILD_DETAIL_URL, { "id": guildId })
       .then((response) => {
         console.log("getGuildInfo called to refresh guild info");
         setGuildDetail(response.data.Response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  const getHeroOptions = () => {
+    axios.get(HERO_OPTIONS_URL)
+      .then((response) => {
+        console.log(response.data.Response);
+        setHeroOptions(response.data.Response);
       })
       .catch((error) => {
         console.log(error);
@@ -91,6 +106,7 @@ const Guild = () => {
     const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
     const guildId = guildDetail.id;
     getGuildInfo(guildId);
+    getHeroOptions();
   }, []);
 
   const clickGuild = () => {
@@ -209,7 +225,6 @@ const Guild = () => {
   const createParty = () => {
     console.log("create party clicked");
     setCreatePartyDisplay({ display: "inline-block" });
-    // getGuildInfo(guildDetail.ID);
   }
 
   const PartyColumn = () => {
@@ -288,6 +303,7 @@ const Guild = () => {
   }
 
   const fireHero = (event) => {
+    console.log("fire hero clicked");
     const heroId = event.target.value;
     axios.post(FIRE_HERO_URL, { "id": heroId, "guild_id": guildDetail.ID })
       .then((response) => {
@@ -295,6 +311,7 @@ const Guild = () => {
         if (response.data.Response !== "Success") {
           alert(response.data.Response);
         } else {
+          console.log('fired hero');
           setDisplayStatus(() => {
             return {
               'guild': { display: "inline-block" },
@@ -308,6 +325,27 @@ const Guild = () => {
       .catch((error) => {
         console.log(error);
       });
+  }
+
+  const setHeroOption = (event) => {
+    setChoosenHeroOption(event.target.value);
+  }
+
+  const submitHeroOption = () => {
+    console.log("the option is "+choosenHeroOption);
+    if (choosenHeroOption === undefined) {
+      return;
+    }
+    const heroOptionUrl = HEROKU_URL + choosenHeroOption;
+    axios.post(heroOptionUrl, { "id": heroDetail.ID, "guild_id": guildDetail.ID })
+      .then((response) => {
+        if (response.data.Response !== "Success") {
+          alert(response.data.Response);
+        } else {
+          console.log('Success');
+          getGuildInfo(guildDetail.ID);
+        };
+      })
   }
 
   const HeroDetailBoard = () => {
@@ -330,12 +368,17 @@ const Guild = () => {
           EXP:
           <div style={{ textAlign: 'center' }}>{heroDetail.Exp}</div>
         </div>
-        <button id="hero_heal" value={heroDetail.ID} onClick={healHero}>
-          HEAL
-        </button>
-        <button id="hero_fire" value={heroDetail.ID} onClick={fireHero}>
-          FIRE
-        </button>
+        <select className='hero_options' value={choosenHeroOption} onChange={setHeroOption}>
+          <option>What To Do To This Hero?</option>
+          {
+            Object.keys(heroOptions).map((option, ind) => {
+              return (
+                <option key={ind} value={heroOptions[option]}>{option}</option>
+              )
+            })
+          }
+        </select>
+        <button className="do_option" onClick={submitHeroOption}>Do it</button>
       </div>
     )
   };
