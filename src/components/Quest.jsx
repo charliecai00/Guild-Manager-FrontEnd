@@ -6,7 +6,7 @@ import { ExitIcon } from './ExitIcon';
 
 const Quest = () => {
   const [unsoldQuest, setUnsoldQuest] = useState();
-  const [currGuild, setCurrGuild] = useState({ "id": null, "name": null });
+  const [currGuild, setCurrGuild] = useState({ "ID": null, "Name": null });
   const [purchaseStatus, setPurchaseStatus] = useState();
 
   const getInfo = () => {
@@ -32,7 +32,7 @@ const Quest = () => {
 
   const buyQuest = (event) => {
     console.log("Buy Quest");
-    axios.post(BUY_QUEST_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.id })
+    axios.post(BUY_QUEST_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.ID })
       .then((response) => {
         console.log(response.data.Response);
         if (response.data.Response !== "Success") {

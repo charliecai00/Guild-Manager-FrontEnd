@@ -14,7 +14,7 @@ export const SelectParty = ({ quest_id, parties, style }) => {
 
     const startQuest = (event) => {
         const partyId = event.target.value;
-        axios.post(START_QUEST_URL, { "id": quest_id, "party_id": partyId})
+        axios.post(START_QUEST_URL, { "id": parseInt(quest_id), "party_id": parseInt(partyId)})
           .then((response) => {
             console.log(response.data.Response);
             if (typeof response.data.Response === 'string'){
@@ -23,7 +23,7 @@ export const SelectParty = ({ quest_id, parties, style }) => {
                 alert("Quest Started!");
                 setTimeout(() => {
                     navigate('/doingQuest', { state: { questReport: response.data.Response } });
-                  }, 1000);
+                  }, 100);
             };
           })
           .catch((error) => {
@@ -50,7 +50,7 @@ export const SelectParty = ({ quest_id, parties, style }) => {
                             key={ind}
                             onClick={startQuest}
                             value={party.ID}>
-                            {party.name}
+                            {party.Name}
                         </button>
                     )
                 })}

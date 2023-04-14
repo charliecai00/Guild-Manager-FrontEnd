@@ -362,7 +362,7 @@ const Guild = () => {
     setSelectHeroDisplay({ display: "inline-block" });
   }
 
-  const disbandHero = () => {
+  const disbandParty = () => {
     axios.post(DISBAND_PARTY_URL, { "id": partyDetail.ID })
       .then((response) => {
         console.log(response.data.Response);
@@ -395,7 +395,7 @@ const Guild = () => {
         <button id="remove_hero" onClick={removeHero}>
           Remove Hero
         </button>
-        <button id="disband_hero" onClick={disbandHero}>
+        <button id="disband_party" onClick={disbandParty}>
           Disband
         </button>
       </div>

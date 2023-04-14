@@ -6,7 +6,7 @@ import { ExitIcon } from './ExitIcon';
 
 const Hero = () => {
     const [unemployedHeroes, setUnemployedHeroes] = useState();
-    const [currGuild, setCurrGuild] = useState({ "id": null, "name": null });
+    const [currGuild, setCurrGuild] = useState({ "ID": null, "Name": null });
     const [hireStatus, setHireStatus] = useState();
 
     const getInfo = () => {
@@ -32,7 +32,7 @@ const Hero = () => {
 
     const hireHero = (event) => {
         console.log("Hire hero");
-        axios.post(HIRE_HERO_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.id })
+        axios.post(HIRE_HERO_URL, { "id": parseInt(event.target.value), "guild_id": currGuild.ID })
             .then((response) => {
                 console.log(response.data.Response);
                 if (response.data.Response !== "Success") {
@@ -64,7 +64,7 @@ const Hero = () => {
                             <ul className="sales" key={hero.ID}>
                                 <div className="sale_grid">
                                     <div className="sale_item">
-                                        <div className="text vertical_middle">
+                              x          <div className="text vertical_middle">
                                             {hero.Name} (Strength: {hero.Stats.STR} &nbsp;
                                             Dexterity: {hero.Stats.DEX} &nbsp;
                                             Constitution: {hero.Stats.CON} &nbsp;
