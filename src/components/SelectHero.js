@@ -32,6 +32,7 @@ export const SelectHero = (props) => {
                     alert(response.data.Response);
                 };
                 getHeroes();
+                props.refresh_party(props.party_id);
             })
             .catch((error) => {
                 console.log(error);
@@ -47,6 +48,7 @@ export const SelectHero = (props) => {
                     alert(response.data.Response);
                 };
                 getHeroes();
+                props.refresh_party(props.party_id);
             })
             .catch((error) => {
                 console.log(error);
@@ -54,7 +56,7 @@ export const SelectHero = (props) => {
     }
 
     const exit = () => {
-        props.refresh_guild(props.guild_id)
+        props.refresh_guild(props.guild_id);
         setStyle({ display: "none" });
     }
 

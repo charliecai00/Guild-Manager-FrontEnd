@@ -142,9 +142,8 @@ const Guild = () => {
       });
   }
 
-  const clickParty = (event) => {
-    console.log(event.target.value);
-    axios.post(PARTY_DETAIL_URL, { "id": parseInt(event.target.value) })
+  const getPartyInfo = (partyId) => {
+    axios.post(PARTY_DETAIL_URL, { "id": parseInt(partyId) })
       .then((response) => {
         console.log(response);
         setPartyDetail(response.data.Response);
@@ -161,6 +160,18 @@ const Guild = () => {
       .catch((error) => {
         console.log(error);
       });
+  }
+    
+  const clickParty = (event) => {
+    getPartyInfo(event.target.value);
+    setDisplayStatus(() => {
+      return {
+        'guild': { display: "none" },
+        'hero': { display: "none" },
+        'party': { display: "inline-block" },
+        'quest': { display: "none" }
+      }}
+    )
   }
 
   const clickQuest = (event) => {
@@ -193,7 +204,6 @@ const Guild = () => {
   };
 
   const hireFunc = (event) => {
-    // event.preventDefault();
     console.log("hire clicked");
   }
 
@@ -287,45 +297,6 @@ const Guild = () => {
       </div>
     )
   };
-
-  const healHero = (event) => {
-    const heroId = event.target.value;
-    axios.post(HEAL_HERO_URL, { "id": parseInt(heroId), "guild_id": guildDetail.ID })
-      .then((response) => {
-        console.log(response.data.Response);
-        if (response.data.Response !== "Success") {
-          alert(response.data.Response);
-        };
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  const fireHero = (event) => {
-    console.log("fire hero clicked");
-    const heroId = event.target.value;
-    axios.post(FIRE_HERO_URL, { "id": heroId, "guild_id": guildDetail.ID })
-      .then((response) => {
-        console.log(response.data.Response);
-        if (response.data.Response !== "Success") {
-          alert(response.data.Response);
-        } else {
-          console.log('fired hero');
-          setDisplayStatus(() => {
-            return {
-              'guild': { display: "inline-block" },
-              'hero': { display: "none" },
-              'party': { display: "none" },
-              'quest': { display: "none" }
-            }
-          })
-        };
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
 
   const setHeroOption = (event) => {
     setChoosenHeroOption(event.target.value);
@@ -499,6 +470,7 @@ const Guild = () => {
       <SelectHero guild_id={guildDetail.ID}
         refresh_guild={getGuildInfo}
         party_id={partyDetail.ID}
+        refresh_party={getPartyInfo}
         function={selectHeroFunction}
         style={selectHeroDisplay} />
       <SelectParty quest_id={questDetail.ID}
