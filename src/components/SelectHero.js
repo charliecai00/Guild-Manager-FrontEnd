@@ -8,7 +8,7 @@ export const SelectHero = (props) => {
     const [heroes, setHeroes] = useState([]);
     const [style, setStyle] = useState(props.style);
 
-    const getHeroes = () => {
+    const getHeroesNotInParty = () => {
         axios.post(HERO_NOT_IN_PARTY_URL, { "id": parseInt(props.guild_id) })
             .then((response) => {
                 setHeroes(response.data.Response);
@@ -19,8 +19,8 @@ export const SelectHero = (props) => {
         if (props.party_id === undefined || props.party_id === null) {
             return;
         }
-        getHeroes();
-        setStyle(props.style)
+        props.function === "add" ? getHeroesNotInParty() : setHeroes(props.heroes_in_party);
+        setStyle(props.style);
     }, [props.style]);
 
     const addHero = (event) => {
@@ -31,7 +31,7 @@ export const SelectHero = (props) => {
                 if (response.data.Response !== "Success") {
                     alert(response.data.Response);
                 };
-                getHeroes();
+                getHeroesNotInParty();
                 props.refresh_party(props.party_id);
             })
             .catch((error) => {
@@ -47,7 +47,7 @@ export const SelectHero = (props) => {
                 if (response.data.Response !== "Success") {
                     alert(response.data.Response);
                 };
-                getHeroes();
+                setHeroes(props.heroes_in_party);
                 props.refresh_party(props.party_id);
             })
             .catch((error) => {

@@ -64,20 +64,20 @@ const GuildManager = () => {
           return (
             <button
               className="guild-button"
-              value={JSON.stringify({ id: guildInfo.id, name: guildInfo.name })}
+              value={JSON.stringify({ ID: guildInfo.ID, Name: guildInfo.Name })}
               onClick={handleClick}
               key={ind}
             >
-              {guildInfo.name}
+              {guildInfo.Name}
             </button>
           )
         })}
       </div>
       <div className="new_guild">
         <form onSubmit={handleSubmit}>
-          <label id="new_guild_text" htmlFor="new_guild_name">New Guild:</label>
+          <label id="new_guild_text" htmlFor="new_guild_Name">New Guild:</label>
           <span>
-            <input name="new_guild_name" id="new_guild_text" type="text" value={formData} onChange={handleInputChange} />
+            <input Name="new_guild_Name" id="new_guild_text" type="text" value={formData} onChange={handleInputChange} />
           </span>
         </form>
       </div>

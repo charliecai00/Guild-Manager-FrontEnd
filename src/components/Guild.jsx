@@ -9,8 +9,6 @@ import {
   HERO_OPTIONS_URL,
   PARTY_DETAIL_URL,
   QUEST_DETAIL_URL,
-  HEAL_HERO_URL,
-  FIRE_HERO_URL,
   DISBAND_PARTY_URL,
   SELL_QUEST_URL
 } from './url';
@@ -104,7 +102,7 @@ const Guild = () => {
   useEffect(() => {
     console.log("current guild:" + localStorage.getItem('currGuild'));
     const guildDetail = JSON.parse(localStorage.getItem('currGuild'));
-    const guildId = guildDetail.id;
+    const guildId = guildDetail.ID;
     getGuildInfo(guildId);
     getHeroOptions();
   }, []);
@@ -122,7 +120,7 @@ const Guild = () => {
   }
 
   const clickHero = (event) => {
-    console.log(event.target.value);
+    console.log("the hero id is: "+event.target.value);
     axios.post(HERO_DETAIL_URL, { "id": parseInt(event.target.value) })
       .then((response) => {
         console.log(response);
@@ -222,8 +220,8 @@ const Guild = () => {
               <button className="elements-in-scrollable"
                 key={ind}
                 onClick={clickHero}
-                value={hero.id}>
-                {hero.name}
+                value={hero.ID}>
+                {hero.Name}
               </button>
             )
           })}
@@ -250,8 +248,8 @@ const Guild = () => {
               <button className="elements-in-scrollable"
                 key={ind}
                 onClick={clickParty}
-                value={party.id}>
-                {party.name}
+                value={party.ID}>
+                {party.Name}
               </button>
             )
           })}
@@ -275,8 +273,8 @@ const Guild = () => {
               <button className="elements-in-scrollable"
                 key={ind}
                 onClick={clickQuest}
-                value={quest.id}>
-                {quest.name}
+                value={quest.ID}>
+                {quest.Name}
               </button>
             )
           })}
@@ -387,7 +385,7 @@ const Guild = () => {
           <h4>Heroes</h4>
           {
             partyDetail.Hero && partyDetail.Hero.map(function (hero, ind) {
-              return <div key={ind} style={{ fontSize: "25px", border: "1px solid black" }}>{hero.name + ",\n"}</div>
+              return <div key={ind} style={{ fontSize: "25px", border: "1px solid black" }}>{hero.Name + ",\n"}</div>
             })
           }
         </div>
@@ -471,6 +469,7 @@ const Guild = () => {
         refresh_guild={getGuildInfo}
         party_id={partyDetail.ID}
         refresh_party={getPartyInfo}
+        heroes_in_party={partyDetail.Hero}
         function={selectHeroFunction}
         style={selectHeroDisplay} />
       <SelectParty quest_id={questDetail.ID}
