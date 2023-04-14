@@ -1,6 +1,7 @@
 import "./pop_up_window.css";
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { ExitIcon } from "./ExitIcon";
 import { CREATE_PARTY_URL } from "./url";
 
 export const CreateParty = (props) => {
@@ -19,6 +20,9 @@ export const CreateParty = (props) => {
                 console.log(response.data);
                 if (response.data.Response !== "Success") {
                     alert(response.data.Response);
+                }else{
+                    props.refresh_guild(props.guild_id)
+                    setStyle({ display: "none" });
                 };
             })
             .catch((error) => {
@@ -31,13 +35,14 @@ export const CreateParty = (props) => {
         setFormData(value);
     };
 
-    const done = () => {
+    const exit = () => {
         props.refresh_guild(props.guild_id)
         setStyle({ display: "none" });
     }
 
     return (
         <div className="pop_up_box" style={style}>
+            <ExitIcon onClick={exit}/>
             <div className="pop_up_title">
                 <div style={{ position: "absolute", left: "38%", top: "20%" }}>
                     Create Party
@@ -51,12 +56,12 @@ export const CreateParty = (props) => {
                     </span>
                 </form>
             </div>
-            <div className="pop_up_done" >
+            {/* <div className="pop_up_done" >
                 <div style={{ position: "relative", left: "10%", top: "20%", fontSize: "35px" }}
                 onClick={done}>
                     DONE
                 </div>
-            </div>
+            </div> */}
         </div>
     )
 }
