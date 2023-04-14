@@ -414,7 +414,9 @@ const Guild = () => {
       <div className="quest_detail" style={displayStatus.quest}>
         <div id="quest_name">{questDetail.Name}</div>
         <div id="challenge_list">
-          Challenge Lvl: {questDetail.ChallengeLevel}
+          Challenge Lvl: {questDetail.ChallengeLevel} <br />
+          Cost: {questDetail.Cost} <br />
+          Resell: {questDetail.Resell} <br />
         </div>
         <button id="start_quest" onClick={startQuest}>
           Start
