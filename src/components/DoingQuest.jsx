@@ -9,11 +9,12 @@ import dragon from '../img/dragon.jpg';
 const DoingQuest = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const questReport = location.state?.questReport;
 
   useEffect(() => {
+    const questReport = location.state?.questReport;
+    console.log(questReport);
     setTimeout(() => {
-      navigate('/questReport', {state: {message: questReport}});
+      navigate('/questReport', {state: {questReport: questReport}});
     }, 2200);
   }, []);
 

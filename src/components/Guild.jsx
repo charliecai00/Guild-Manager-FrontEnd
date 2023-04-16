@@ -363,7 +363,7 @@ const Guild = () => {
   }
 
   const disbandParty = () => {
-    axios.post(DISBAND_PARTY_URL, { "id": partyDetail.ID })
+    axios.post(DISBAND_PARTY_URL, { "id": guildDetail.ID, "party_id": partyDetail.ID })
       .then((response) => {
         console.log(response.data.Response);
         if (response.data.Response !== "Success") {

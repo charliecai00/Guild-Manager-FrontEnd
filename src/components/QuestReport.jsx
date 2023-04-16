@@ -1,10 +1,33 @@
 import './QuestReport.css';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 
 const QuestReport = () => {
     const location = useLocation();
-    const questReport = location.state?.questReport;
+    const [questReport, setQuestReport] = useState({
+        "EventList": [],
+          "Reward": null,
+          "PartyStatus": [
+            {
+              "HeroName": "Ameen The Time Mage",
+              "Health": 5,
+              "Exp": 20
+            },
+            {
+              "HeroName": "Paula The Sad",
+              "Health": 5,
+              "Exp": 0
+            }
+          ]
+    });
+    
+    useEffect(() => {
+        setQuestReport(location.state?.questReport);
+    }, []);
+    
+    useEffect(() => {
+        console.log(questReport);
+    }, [questReport]);
 
     return (
         <div>
@@ -16,15 +39,16 @@ const QuestReport = () => {
                 </div>
                 <div>
                     <p id="quest_report">
-                        John killed a bugbear<br />
-                        <br /> Conan unlocked the tomb of necropower<br />
-                        <br /> John lost a fight to a pack of wolves<br />
-                        <br /> Conan punched a Dragon<br />
-                        <br /> Conan stole a chalice from the Lich King<br />
-                        <br /> Conan unlocked the tomb of necropower<br />
-                        <br /> John lost a fight to a pack of wolves<br />
-                        <br /> Conan punched a Dragon<br />
-                        <br /> Conan stole a chalice from the Lich King<br />
+                        {
+                            questReport.EventList.map((event, index) => {
+                                return (
+                                    <div key={index}>
+                                        {index+1}, {event}<br />
+                                        <br />
+                                    </div>
+                                )
+                            }
+                        )}
                     </p>
                 </div>
             </div>
@@ -33,16 +57,23 @@ const QuestReport = () => {
                     PARTY STATUS:
                 </div>
                 <div>
-                    <h1 id="party_name">JOHN:</h1>
-                    <h1 id="party_status">DEAD</h1>
-                    <h1 id="party_name">CONAN:</h1>
-                    <h1 id="party_status">HEALTH: 2</h1>
-                    <h1 id="party_status">EXP: 40</h1>
+                    {
+                        questReport.PartyStatus.map((hero, index) => {
+                            return (
+                                <div key={index}>
+                                    <h1 id="party_name">{hero.HeroName}:</h1>
+                                    <h1 id="party_status">HEALTH: {hero.Health}</h1>
+                                    <h1 id="party_status">EXP: {hero.Exp}</h1>
+                                </div>
+                            )
+                        }
+                    )
+                    }
                 </div>
             </div>
             <div className="payout">
                 <div className="report_text" style={{ position: 'relative', top: '50%', transform: 'translate(0px, -50%)', paddingLeft: '10px' }}>
-                    PAYOUT:$300
+                    reward: ${questReport.Reward}
                 </div>
             </div>
             <div className="done">

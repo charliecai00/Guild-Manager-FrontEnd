@@ -20,10 +20,9 @@ export const SelectParty = ({ quest_id, parties, style }) => {
             if (typeof response.data.Response === 'string'){
               alert(response.data.Response);
             }else{
-                alert("Quest Started!");
                 setTimeout(() => {
                     navigate('/doingQuest', { state: { questReport: response.data.Response } });
-                  }, 100);
+                }, 100);
             };
           })
           .catch((error) => {
