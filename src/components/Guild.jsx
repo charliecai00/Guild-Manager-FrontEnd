@@ -286,8 +286,8 @@ const Guild = () => {
   const GuildDetailBoard = () => {
     return (
       <div className="guild_detail" style={displayStatus.guild}>
-        Guild Stats:
-        <br /> Funds: {guildDetail.Funds}
+        Guild Stats: <br />
+        <br /> Funds: ${guildDetail.Funds}
         <br /> Heroes: {guildDetail['Amt. of Hero']}
         <br /> Parties: {guildDetail['Amt. of Party']}
         <br /> Quests: {guildDetail['Amt. of Quest']}
