@@ -108,10 +108,10 @@
 .guild_detail{
   /* display: none; */
   position: relative;
-  top: 2%;
+  top: 4%;
   left:2%;
   height: 90%;
-  width: 88%;
+  width: 90%;
   border: solid black;
   background-color: rgb(190, 253, 190);
   font-size: 30px;
