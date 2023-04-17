@@ -383,10 +383,11 @@ const Guild = () => {
       <div className="party_detail" style={displayStatus.party}>
         <div className="party_name">{partyDetail.Name}</div>
         <div className="hero_list">
-          <h4>Heroes</h4>
+          Heroes: <br />
+          <br />
           {
             partyDetail.Hero && partyDetail.Hero.map(function (hero, ind) {
-              return <div key={ind} style={{ fontSize: "25px", border: "1px solid black" }}>{hero.Name + ",\n"}</div>
+              return <div key={ind} style={{ fontSize: "30px", border: "1px solid black" }}>{hero.Name}<br /></div>
             })
           }
         </div>
