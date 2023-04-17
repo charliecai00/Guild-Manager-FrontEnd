@@ -64,7 +64,7 @@ const Hero = () => {
                             <ul className="sales" key={hero.ID}>
                                 <div className="sale_grid">
                                     <div className="sale_item">
-                              x          <div className="text vertical_middle">
+                                        <div className="text vertical_middle">
                                             {hero.Name} (Strength: {hero.Stats.STR} &nbsp;
                                             Dexterity: {hero.Stats.DEX} &nbsp;
                                             Constitution: {hero.Stats.CON} &nbsp;
