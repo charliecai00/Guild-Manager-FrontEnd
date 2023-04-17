@@ -122,12 +122,12 @@
 /* Below is the style for hero_detail block inside details box */
 
 #hero_name{
-  height: 6vh;
-  width: 24vw;
-  margin: 25px 15px 5px 15px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-bottom: 10px;
+  height: 8vh;
+  margin: 15px 15px 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(12px, 30px, 36px);
   border: solid black;
   background-color: rgb(190, 253, 190);
 }
@@ -213,10 +213,12 @@
 } */
 
 .party_name{
-  height: 7vh;
-  margin: 20px 15px 15px 15px;
-  padding-top: 10px;
-  padding-left: 10px;
+  height: 8vh;
+  margin: 15px 15px 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(12px, 30px, 36px);
   border: solid black;
   background-color: rgb(190, 253, 190);
 }
@@ -284,6 +286,10 @@
 #quest_name{
   height: 8vh;
   margin: 15px 15px 15px 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: clamp(12px, 30px, 36px);
   border: solid black;
   background-color: rgb(190, 253, 190);
 }
