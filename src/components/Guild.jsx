@@ -371,6 +371,7 @@ const Guild = () => {
           return;
         };
         getGuildInfo(guildDetail.ID);
+        setDisplayStatus({ ...displayStatus, party: { display: "none" } });
       })
       .catch((error) => {
         console.log(error);
@@ -411,6 +412,7 @@ const Guild = () => {
           return;
         };
         getGuildInfo(guildDetail.ID);
+        setDisplayStatus({ ...displayStatus, quest: { display: "none" } });
       })
       .catch((error) => {
         console.log(error);
