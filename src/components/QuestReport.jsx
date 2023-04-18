@@ -38,11 +38,11 @@ const QuestReport = () => {
                     QUEST REPORT:
                 </div>
                 <div>
-                    <p className="quest_report">
+                    <p>
                         {questReport.EventList.map((event, index) => {
                             return (
                                 <div className="report_content" key={index}>
-                                    {index+1}, {event}<br />
+                                    {event}<br />
                                     <br />
                                 </div>
                             )}
@@ -55,8 +55,7 @@ const QuestReport = () => {
                     PARTY STATUS:
                 </div>
                 <div>
-                    {
-                        questReport.PartyStatus.map((hero, index) => {
+                    {questReport.PartyStatus.map((hero, index) => {
                             return (
                                 <div key={index}>
                                     <h1 id="party_name">{hero.HeroName}:</h1>
@@ -64,8 +63,7 @@ const QuestReport = () => {
                                     <h1 id="party_status">EXP: {hero.Exp}</h1>
                                 </div>
                             )
-                        }
-                    )
+                    })
                     }
                 </div>
             </div>
