@@ -15,14 +15,16 @@
     background-color: rgb(190, 253, 190);
 }
 
-#quest_report{
+.report_content{
     font-weight: normal;
     font-family: Arial;
     font-size: 30px;
-    width: 30vw;
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0px);
+    margin: 0;
+    padding-left: 0px;
+    margin-left: 4vh;
+    margin-right: 4vh;
+    margin-top: 2vh;
+    background-color: rgb(255, 149, 0);
 }
 
 .report_text{

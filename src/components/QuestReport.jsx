@@ -38,16 +38,14 @@ const QuestReport = () => {
                     QUEST REPORT:
                 </div>
                 <div>
-                    <p id="quest_report">
-                        {
-                            questReport.EventList.map((event, index) => {
-                                return (
-                                    <div key={index}>
-                                        {index+1}, {event}<br />
-                                        <br />
-                                    </div>
-                                )
-                            }
+                    <p className="quest_report">
+                        {questReport.EventList.map((event, index) => {
+                            return (
+                                <div className="report_content" key={index}>
+                                    {index+1}, {event}<br />
+                                    <br />
+                                </div>
+                            )}
                         )}
                     </p>
                 </div>
