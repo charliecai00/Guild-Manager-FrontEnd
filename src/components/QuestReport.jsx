@@ -69,7 +69,7 @@ const QuestReport = () => {
             </div>
             <div className="payout">
                 <div className="report_text" style={{ position: 'relative', top: '50%', transform: 'translate(0px, -50%)', paddingLeft: '10px' }}>
-                    reward: ${questReport.Reward}
+                    Reward: ${questReport.Reward}
                 </div>
             </div>
             <div className="done">

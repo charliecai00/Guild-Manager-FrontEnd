@@ -76,7 +76,7 @@ const Guild = () => {
   const [selectPartyDisplay, setSelectPartyDisplay] = useState({ display: "none" });
   const [heroOptions, setHeroOptions] = useState({});
   const [choosenHeroOption, setChoosenHeroOption] = useState();
-  
+
   const getGuildInfo = (guildId) => {
     axios.post(GUILD_DETAIL_URL, { "id": guildId })
       .then((response) => {
@@ -120,7 +120,7 @@ const Guild = () => {
   }
 
   const clickHero = (event) => {
-    console.log("the hero id is: "+event.target.value);
+    console.log("the hero id is: " + event.target.value);
     axios.post(HERO_DETAIL_URL, { "id": parseInt(event.target.value) })
       .then((response) => {
         console.log(response);
@@ -159,7 +159,7 @@ const Guild = () => {
         console.log(error);
       });
   }
-    
+
   const clickParty = (event) => {
     getPartyInfo(event.target.value);
     setDisplayStatus(() => {
@@ -168,7 +168,8 @@ const Guild = () => {
         'hero': { display: "none" },
         'party': { display: "inline-block" },
         'quest': { display: "none" }
-      }}
+      }
+    }
     )
   }
 
@@ -301,7 +302,7 @@ const Guild = () => {
   }
 
   const submitHeroOption = () => {
-    console.log("the option is "+choosenHeroOption);
+    console.log("the option is " + choosenHeroOption);
     if (choosenHeroOption === undefined) {
       return;
     }
@@ -347,7 +348,9 @@ const Guild = () => {
             })
           }
         </select>
-        <button className="do_option" onClick={submitHeroOption}>Do it</button>
+        <form onSubmit={submitHeroOption}>
+          <button className="do_option" stype="submit">Do it</button>
+        </form>
       </div>
     )
   };
