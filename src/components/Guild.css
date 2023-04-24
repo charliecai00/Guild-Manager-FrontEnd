@@ -297,7 +297,7 @@
 
 #challenge_list{
   height: 50vh;
-  margin: 15px 15px 15px 15px;
+  margin: 20px 15px 15px 15px;
   overflow: hidden;
   overflow-y: scroll;
   border: solid black;
