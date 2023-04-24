@@ -2,6 +2,7 @@ body{
   background-color: rgb(109, 78, 188);
   font-weight: normal;
   font-family: Arial;
+  max-height: 100%;
 }
 
 .vertical_middle {

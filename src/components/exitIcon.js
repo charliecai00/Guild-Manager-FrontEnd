@@ -15,6 +15,7 @@ export const ExitIcon = ({value, onClick}) => {
   return (
     <img className='exit'
       src={iconCloseImg}
+      alt=''
       onClick={handleClick}>
     </img>
   )
