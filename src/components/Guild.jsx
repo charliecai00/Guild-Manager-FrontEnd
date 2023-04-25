@@ -478,7 +478,8 @@ const Guild = () => {
         heroes_in_party={partyDetail.Hero}
         function={selectHeroFunction}
         style={selectHeroDisplay} />
-      <SelectParty quest_id={questDetail.ID}
+      <SelectParty guild_id={guildDetail.ID}
+        quest_id={questDetail.ID}
         parties={guildDetail.Party}
         style={selectPartyDisplay} />
     </div>

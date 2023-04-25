@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ExitIcon } from "./ExitIcon";
 import { START_QUEST_URL } from "./url";
 
-export const SelectParty = ({ quest_id, parties, style }) => {
+export const SelectParty = ({ quest_id, parties, style, guild_id }) => {
     const navigate = useNavigate();
     const [localStyle, setLocalStyle] = useState(style);
     useEffect(() => {
@@ -14,7 +14,7 @@ export const SelectParty = ({ quest_id, parties, style }) => {
 
     const startQuest = (event) => {
         const partyId = event.target.value;
-        axios.post(START_QUEST_URL, { "id": parseInt(quest_id), "party_id": parseInt(partyId)})
+        axios.post(START_QUEST_URL, { "id": parseInt(quest_id), "party_id": parseInt(partyId), "guild_id": parseInt(guild_id)})
           .then((response) => {
             console.log(response.data.Response);
             if (typeof response.data.Response === 'string'){
