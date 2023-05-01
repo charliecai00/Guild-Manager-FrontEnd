@@ -91,7 +91,6 @@ const Guild = () => {
   const getHeroOptions = () => {
     axios.get(HERO_OPTIONS_URL)
       .then((response) => {
-        console.log(response.data.Response);
         setHeroOptions(response.data.Response);
       })
       .catch((error) => {
@@ -108,7 +107,6 @@ const Guild = () => {
   }, []);
 
   const clickGuild = () => {
-    console.log("guild clicked");
     setDisplayStatus(() => {
       return {
         'guild': { display: "inline-block" },
@@ -120,7 +118,6 @@ const Guild = () => {
   }
 
   const clickHero = (event) => {
-    console.log("the hero id is: " + event.target.value);
     axios.post(HERO_DETAIL_URL, { "id": parseInt(event.target.value) })
       .then((response) => {
         console.log(response);
@@ -176,7 +173,6 @@ const Guild = () => {
   const clickQuest = (event) => {
     axios.post(QUEST_DETAIL_URL, { "id": JSON.parse(event.target.value) })
       .then((response) => {
-        console.log(response);
         setQuestDetail(response.data.Response);
         setDisplayStatus(() => {
           return {
@@ -232,7 +228,6 @@ const Guild = () => {
   };
 
   const createParty = () => {
-    console.log("create party clicked");
     setCreatePartyDisplay({ display: "inline-block" });
   }
 
@@ -302,7 +297,6 @@ const Guild = () => {
   }
 
   const submitHeroOption = () => {
-    console.log("the option is " + choosenHeroOption);
     if (choosenHeroOption === undefined) {
       return;
     }
@@ -368,7 +362,6 @@ const Guild = () => {
   const disbandParty = () => {
     axios.post(DISBAND_PARTY_URL, { "id": guildDetail.ID, "party_id": partyDetail.ID })
       .then((response) => {
-        console.log(response.data.Response);
         if (response.data.Response !== "Success") {
           alert(response.data.Response);
           return;
@@ -410,7 +403,6 @@ const Guild = () => {
   const sellQuest = () => {
     axios.post(SELL_QUEST_URL, { "id": questDetail.ID, "guild_id": guildDetail.ID })
       .then((response) => {
-        console.log(response.data.Response);
         if (response.data.Response !== "Success") {
           alert(response.data.Response);
           return;
